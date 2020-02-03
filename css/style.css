@@ -1,32 +1,19 @@
-/* Media Queries: Tablet Landscape */
-@media screen and (max-width: 1060px) {
-    #primary { width:67%; }
-    #secondary { width:30%; margin-left:3%;}  
-}
-
-/* Media Queries: Tabled Portrait */
-@media screen and (max-width: 768px) {
-    #primary { width:100%; }
-    #secondary { width:100%; margin:0; border:none; }
-}
-
-
-
 *{
-            margin: 0;
-            padding: 0;
-        }
-        body,html{
-            color: white; 
-            font-family: 'lato','sans-serif';
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;  /* min-height: 100vh; vh: hundredths of the viewport height. */
-        }
+    margin: 0;
+    padding: 0;
+}
 
-        body{
-            background-image: url(https://steamcdn-a.akamaihd.net/steamcommunity/public/images/items/274500/be6ec5e3881f41b44c85fd8b910d0ffbb4111d8b.jpg);
+body,html{
+    color: white; 
+    font-family: 'lato','sans-serif';
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;  /* min-height: 100vh; vh: hundredths of the viewport height. */    
+}
+
+body{
+    background-image: url(https://steamcdn-a.akamaihd.net/steamcommunity/public/images/items/274500/be6ec5e3881f41b44c85fd8b910d0ffbb4111d8b.jpg);
             background-size: cover;
             background-repeat: no-repeat;
             background-position: bottom;
@@ -41,9 +28,11 @@
             object-position: 0 -8px;
         }
         .center{
-            width: 55%;
+            margin-top: 40px;
+            width: 80%;
             background-color: rgba(0, 0, 0, 0.7);
-            height: 70vh;
+            height: 100%;
+            margin-bottom: 50px;
             text-align: center;
             border-radius: 5px;
         }
@@ -59,11 +48,11 @@
         p{ 
             font-weight: lighter;
             letter-spacing: 1px;
-            width: 70%;
+            width: 100%;
             margin: 10px auto;
         }
         .content h2{
-            font font-weight: 400;
+            font-weight: 400;
         }
         .content h3{
             margin-top: 20px;
@@ -73,7 +62,17 @@
             font-size: 30px;
             color: rgba(255, 255, 255, 0.6);
             transition: 0.4s;
+            margin-bottom: 20px;
         }
         div.social i:hover{
             color: rgba(255, 255, 255, 1);
+            margin-bottom: 20px;
         }
+
+/* Desktop version */
+@media (min-width: 992px) { 
+
+    .center{
+        width: 55%;
+    }
+}
