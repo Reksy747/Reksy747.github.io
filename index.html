@@ -24,21 +24,24 @@
         <div class="wrap">
             <div class="running-head">
                 <span>Ref. REKSY747</span>
-                <span>Issued <time datetime="2026-11-04">04 Nov 2026</time></span>
+                <nav class="page-switch" aria-label="Pages">
+                    <a href="index.html" aria-current="page">CV</a>
+                    <a href="portfolio.html">Portfolio</a>
+                </nav>
             </div>
             <div class="masthead__main">
-                <img class="masthead__photo" src="images/profile.png" alt="Portrait of Petrus Chanel Reksy Arfila" width="96" height="96">
+                <img class="masthead__photo" src="images/profile-192.webp" alt="Portrait of Petrus Chanel Reksy Arfila" width="96" height="96" fetchpriority="high">
                 <div class="masthead__id">
                     <h1 class="masthead__name">Petrus Chanel Reksy Arfila</h1>
-                    <p class="masthead__role">DevOps &amp; Site Reliability Engineer</p>
+                    <p class="masthead__role">DevOps Engineer · MEMBER.ID</p>
+                    <p class="masthead__stack">GCP · Alibaba Cloud · AWS · Kubernetes</p>
                 </div>
                 <div class="masthead__actions">
                     <a class="btn btn--primary" href="https://drive.google.com/file/d/1SHfUOhkKift7SdeT7EdSMaQGtsuMURkG/view?usp=sharing" target="_blank" rel="noopener noreferrer">
                         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M5 21h14"/></svg>
                         Download résumé
                     </a>
-                    <a class="btn btn--ghost" href="portfolio.html">Portfolio</a>
-                    <a class="btn btn--ghost" href="#contact">Send a message</a>
+                    <a class="btn btn--ghost" href="#contact">Contact</a>
                 </div>
             </div>
         </div>
@@ -73,7 +76,13 @@
     <div class="wrap layout">
         <!-- Section index -->
         <nav class="index" aria-label="Sections">
-            <ul>
+            <button class="index__toggle" type="button" aria-expanded="false" aria-controls="index-list">
+                <span class="index__current">Sections</span>
+                <svg class="index__icon index__icon--open" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+                <svg class="index__icon index__icon--close" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+                <span class="visually-hidden">Menu</span>
+            </button>
+            <ul id="index-list">
                 <li><a href="#experience">Experience</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#skills">Skills</a></li>
@@ -90,7 +99,6 @@
             <dl class="summary__facts">
                 <div><dt>Now</dt><dd>DevOps Engineer, MEMBER.ID</dd></div>
                 <div><dt>Base</dt><dd>South Jakarta · Hybrid</dd></div>
-                <div><dt>Clouds</dt><dd>GCP · Alibaba Cloud · AWS</dd></div>
                 <div><dt>Platform</dt><dd>Kubernetes · Linux · CI/CD</dd></div>
                 <div><dt>Started</dt><dd>IT support &amp; networking, 2016</dd></div>
             </dl>
@@ -207,7 +215,7 @@
                 <h2 class="section__title" id="projects-title">Projects</h2>
                 <div class="passes">
                     <article class="pass">
-                        <img class="pass__image" src="images/project.png" alt="Screenshot of the E-learning Dutatani admin interface" loading="lazy" width="1200" height="750">
+                        <img class="pass__image" src="images/project.png" alt="Screenshot of the E-learning Dutatani admin interface" loading="lazy" width="300" height="300">
                         <div class="pass__stub">
                             <h3 class="pass__title">E-learning Dutatani</h3>
                             <p class="pass__ref">Reksy747/dutani</p>
@@ -217,7 +225,7 @@
                         </div>
                     </article>
                     <article class="pass">
-                        <img class="pass__image" src="images/project2.png" alt="Screenshot of the BloodCare login screen" loading="lazy" width="1200" height="750">
+                        <img class="pass__image" src="images/project2.png" alt="Screenshot of the BloodCare login screen" loading="lazy" width="300" height="300">
                         <div class="pass__stub">
                             <h3 class="pass__title">BloodCare</h3>
                             <p class="pass__ref">Reksy747/BloodCare</p>
