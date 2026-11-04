@@ -1,97 +1,75 @@
 /*!
-    Title: Dev Portfolio Template
-    Version: 1.2.2
-    Last Change: 03/25/2020
-    Author: Ryan Fitzgerald
-    Repo: https://github.com/RyanFitzgerald/devportfolio-template
-    Issues: https://github.com/RyanFitzgerald/devportfolio-template/issues
-
-    Description: This file contains all the scripts associated with the single-page
-    portfolio website.
+    Petrus Chanel Reksy Arfila — CV
+    Vanilla JS, no dependencies. The page is complete without it.
 */
 
-(function($) {
+(() => {
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Remove no-js class
-    $('html').removeClass('no-js');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-    // Animate to section when nav is clicked
-    $('header a').click(function(e) {
+    // Contact form: send in place and report status; plain POST remains the no-JS fallback
+    const form = document.querySelector('.form');
+    if (form && window.fetch) {
+        const status = form.querySelector('.form__status');
+        const button = form.querySelector('button[type="submit"]');
+        const say = (text, kind) => {
+            status.textContent = text;
+            status.className = 'form__status' + (kind ? ' is-' + kind : '');
+        };
 
-        // Treat as normal link if no-scroll class
-        if ($(this).hasClass('no-scroll')) return;
-
-        e.preventDefault();
-        var heading = $(this).attr('href');
-        var scrollDistance = $(heading).offset().top;
-
-        $('html, body').animate({
-            scrollTop: scrollDistance + 'px'
-        }, Math.abs(window.pageYOffset - $(heading).offset().top) / 1);
-
-        // Hide the menu once clicked if mobile
-        if ($('header').hasClass('active')) {
-            $('header, body').removeClass('active');
-        }
-    });
-
-    // Scroll to top
-    $('#to-top').click(function() {
-        $('html, body').animate({
-            scrollTop: 0
-        }, 500);
-    });
-
-    // Scroll to first element
-    $('#lead-down span').click(function() {
-        var scrollDistance = $('#lead').next().offset().top;
-        $('html, body').animate({
-            scrollTop: scrollDistance + 'px'
-        }, 500);
-    });
-
-    // Create timeline
-    $('#experience-timeline').each(function() {
-
-        $this = $(this); // Store reference to this
-        $userContent = $this.children('div'); // user content
-
-        // Create each timeline block
-        $userContent.each(function() {
-            $(this).addClass('vtimeline-content').wrap('<div class="vtimeline-point"><div class="vtimeline-block"></div></div>');
-        });
-
-        // Add icons to each block
-        $this.find('.vtimeline-point').each(function() {
-            $(this).prepend('<div class="vtimeline-icon"><i class="fa fa-map-marker"></i></div>');
-        });
-
-        // Add dates to the timeline if exists
-        $this.find('.vtimeline-content').each(function() {
-            var date = $(this).data('date');
-            if (date) { // Prepend if exists
-                $(this).parent().prepend('<span class="vtimeline-date">'+date+'</span>');
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            form.classList.add('is-sending');
+            button.disabled = true;
+            say('Sending…');
+            try {
+                const res = await fetch(form.action, {
+                    method: 'POST',
+                    body: new FormData(form),
+                    headers: { Accept: 'application/json' }
+                });
+                if (!res.ok) throw new Error(res.status);
+                form.reset();
+                say('Sent. Thank you, I will reply by email.', 'sent');
+            } catch (err) {
+                say('Could not send. Check your connection and try again, or message me on LinkedIn.', 'error');
+            } finally {
+                form.classList.remove('is-sending');
+                button.disabled = false;
             }
         });
+    }
 
-    });
+    // Section index: mark where the reader is
+    const links = [...document.querySelectorAll('.index a')];
+    if (!links.length || !('IntersectionObserver' in window)) return;
 
-    // Open mobile menu
-    $('#mobile-menu-open').click(function() {
-        $('header, body').addClass('active');
-    });
-
-    // Close mobile menu
-    $('#mobile-menu-close').click(function() {
-        $('header, body').removeClass('active');
-    });
-
-    // Load additional projects
-    $('#view-more-projects').click(function(e){
-        e.preventDefault();
-        $(this).fadeOut(300, function() {
-            $('#more-projects').fadeIn(300);
+    const setActive = (id) => {
+        links.forEach((link) => {
+            const on = link.getAttribute('href') === '#' + id;
+            link.classList.toggle('is-active', on);
+            if (on) {
+                link.setAttribute('aria-current', 'true');
+                // Keep the active tab visible in the phone tab strip
+                const strip = link.closest('.index');
+                if (strip.scrollWidth > strip.clientWidth) {
+                    strip.scrollTo({ left: link.offsetLeft - 16, behavior: reduceMotion.matches ? 'auto' : 'smooth' });
+                }
+            } else {
+                link.removeAttribute('aria-current');
+            }
         });
-    });
+    };
 
-})(jQuery);
+    const spy = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) setActive(entry.target.id);
+        });
+    }, { rootMargin: '-30% 0px -65% 0px' });
+
+    links
+        .map((link) => document.querySelector(link.getAttribute('href')))
+        .filter(Boolean)
+        .forEach((section) => spy.observe(section));
+})();

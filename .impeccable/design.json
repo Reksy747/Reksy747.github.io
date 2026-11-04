@@ -1,0 +1,728 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-04T16:13:47.943Z",
+  "title": "Design System: Reksy747 CV",
+  "extensions": {
+    "colorMeta": {
+      "stock": {
+        "role": "neutral",
+        "displayName": "Ticket Stock",
+        "canonical": "#eef1f4",
+        "oklch": "oklch(95.7% 0.005 247.9)",
+        "theme": "light",
+        "cssVar": "--stock",
+        "tonalRamp": [
+          "oklch(15% 0.004 247.9)",
+          "oklch(25% 0.004 247.9)",
+          "oklch(37% 0.005 247.9)",
+          "oklch(49% 0.005 247.9)",
+          "oklch(61% 0.005 247.9)",
+          "oklch(73% 0.004 247.9)",
+          "oklch(85% 0.004 247.9)",
+          "oklch(95% 0.004 247.9)"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Printed Paper",
+        "canonical": "#ffffff",
+        "oklch": "oklch(100.0% 0.000 89.9)",
+        "theme": "light",
+        "cssVar": "--paper",
+        "tonalRamp": [
+          "oklch(15% 0.004 89.9)",
+          "oklch(25% 0.004 89.9)",
+          "oklch(37% 0.004 89.9)",
+          "oklch(49% 0.004 89.9)",
+          "oklch(61% 0.004 89.9)",
+          "oklch(73% 0.004 89.9)",
+          "oklch(85% 0.004 89.9)",
+          "oklch(95% 0.004 89.9)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Navy Ink",
+        "canonical": "#13202b",
+        "oklch": "oklch(23.7% 0.028 244.9)",
+        "theme": "light",
+        "cssVar": "--ink",
+        "tonalRamp": [
+          "oklch(15% 0.012 244.9)",
+          "oklch(25% 0.020 244.9)",
+          "oklch(37% 0.028 244.9)",
+          "oklch(49% 0.028 244.9)",
+          "oklch(61% 0.028 244.9)",
+          "oklch(73% 0.021 244.9)",
+          "oklch(85% 0.012 244.9)",
+          "oklch(95% 0.004 244.9)"
+        ]
+      },
+      "ink-muted": {
+        "role": "neutral",
+        "displayName": "Faded Ink",
+        "canonical": "#44546a",
+        "oklch": "oklch(44.1% 0.042 256.4)",
+        "theme": "light",
+        "cssVar": "--ink-muted",
+        "tonalRamp": [
+          "oklch(15% 0.017 256.4)",
+          "oklch(25% 0.029 256.4)",
+          "oklch(37% 0.042 256.4)",
+          "oklch(49% 0.042 256.4)",
+          "oklch(61% 0.042 256.4)",
+          "oklch(73% 0.031 256.4)",
+          "oklch(85% 0.017 256.4)",
+          "oklch(95% 0.006 256.4)"
+        ]
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "Hairline Rule",
+        "canonical": "#c3ccd6",
+        "oklch": "oklch(84.1% 0.017 250.9)",
+        "theme": "light",
+        "cssVar": "--rule",
+        "tonalRamp": [
+          "oklch(15% 0.007 250.9)",
+          "oklch(25% 0.012 250.9)",
+          "oklch(37% 0.017 250.9)",
+          "oklch(49% 0.017 250.9)",
+          "oklch(61% 0.017 250.9)",
+          "oklch(73% 0.013 250.9)",
+          "oklch(85% 0.007 250.9)",
+          "oklch(95% 0.004 250.9)"
+        ]
+      },
+      "perf": {
+        "role": "neutral",
+        "displayName": "Perforation Grey",
+        "canonical": "#9aa7b5",
+        "oklch": "oklch(72.3% 0.025 250.2)",
+        "theme": "light",
+        "cssVar": "--perf",
+        "tonalRamp": [
+          "oklch(15% 0.011 250.2)",
+          "oklch(25% 0.018 250.2)",
+          "oklch(37% 0.025 250.2)",
+          "oklch(49% 0.025 250.2)",
+          "oklch(61% 0.025 250.2)",
+          "oklch(73% 0.019 250.2)",
+          "oklch(85% 0.011 250.2)",
+          "oklch(95% 0.004 250.2)"
+        ]
+      },
+      "route": {
+        "role": "secondary",
+        "displayName": "Route Blue",
+        "canonical": "#1f4fa8",
+        "oklch": "oklch(44.9% 0.153 261.4)",
+        "theme": "light",
+        "cssVar": "--route",
+        "tonalRamp": [
+          "oklch(15% 0.064 261.4)",
+          "oklch(25% 0.107 261.4)",
+          "oklch(37% 0.153 261.4)",
+          "oklch(49% 0.153 261.4)",
+          "oklch(61% 0.153 261.4)",
+          "oklch(73% 0.115 261.4)",
+          "oklch(85% 0.064 261.4)",
+          "oklch(95% 0.021 261.4)"
+        ]
+      },
+      "signal": {
+        "role": "primary",
+        "displayName": "Signal Orange",
+        "canonical": "#f25c05",
+        "oklch": "oklch(66.3% 0.199 41.8)",
+        "theme": "light",
+        "cssVar": "--signal",
+        "tonalRamp": [
+          "oklch(15% 0.084 41.8)",
+          "oklch(25% 0.140 41.8)",
+          "oklch(37% 0.199 41.8)",
+          "oklch(49% 0.199 41.8)",
+          "oklch(61% 0.199 41.8)",
+          "oklch(73% 0.151 41.8)",
+          "oklch(85% 0.084 41.8)",
+          "oklch(95% 0.028 41.8)"
+        ]
+      },
+      "signal-ink": {
+        "role": "primary",
+        "displayName": "Signal Ink",
+        "canonical": "#b93f00",
+        "oklch": "oklch(53.6% 0.168 40.1)",
+        "theme": "light",
+        "cssVar": "--signal-ink",
+        "tonalRamp": [
+          "oklch(15% 0.070 40.1)",
+          "oklch(25% 0.117 40.1)",
+          "oklch(37% 0.168 40.1)",
+          "oklch(49% 0.168 40.1)",
+          "oklch(61% 0.168 40.1)",
+          "oklch(73% 0.127 40.1)",
+          "oklch(85% 0.070 40.1)",
+          "oklch(95% 0.023 40.1)"
+        ]
+      },
+      "signal-hover": {
+        "role": "primary",
+        "displayName": "Signal Hover",
+        "canonical": "#ff7424",
+        "oklch": "oklch(71.6% 0.189 45.4)",
+        "theme": "light",
+        "tonalRamp": [
+          "oklch(15% 0.079 45.4)",
+          "oklch(25% 0.132 45.4)",
+          "oklch(37% 0.189 45.4)",
+          "oklch(49% 0.189 45.4)",
+          "oklch(61% 0.189 45.4)",
+          "oklch(73% 0.143 45.4)",
+          "oklch(85% 0.079 45.4)",
+          "oklch(95% 0.026 45.4)"
+        ]
+      },
+      "on-signal": {
+        "role": "primary",
+        "displayName": "Ember Black",
+        "canonical": "#1a0a00",
+        "oklch": "oklch(16.6% 0.038 61.8)",
+        "theme": "light",
+        "tonalRamp": [
+          "oklch(15% 0.016 61.8)",
+          "oklch(25% 0.027 61.8)",
+          "oklch(37% 0.038 61.8)",
+          "oklch(49% 0.038 61.8)",
+          "oklch(61% 0.038 61.8)",
+          "oklch(73% 0.029 61.8)",
+          "oklch(85% 0.016 61.8)",
+          "oklch(95% 0.005 61.8)"
+        ]
+      },
+      "mast": {
+        "role": "neutral",
+        "displayName": "Masthead Navy",
+        "canonical": "#13202b",
+        "oklch": "oklch(23.7% 0.028 244.9)",
+        "theme": "light",
+        "cssVar": "--mast",
+        "tonalRamp": [
+          "oklch(15% 0.012 244.9)",
+          "oklch(25% 0.020 244.9)",
+          "oklch(37% 0.028 244.9)",
+          "oklch(49% 0.028 244.9)",
+          "oklch(61% 0.028 244.9)",
+          "oklch(73% 0.021 244.9)",
+          "oklch(85% 0.012 244.9)",
+          "oklch(95% 0.004 244.9)"
+        ]
+      },
+      "mast-ink": {
+        "role": "neutral",
+        "displayName": "Masthead Ink",
+        "canonical": "#eef1f4",
+        "oklch": "oklch(95.7% 0.005 247.9)",
+        "theme": "light",
+        "cssVar": "--mast-ink",
+        "tonalRamp": [
+          "oklch(15% 0.004 247.9)",
+          "oklch(25% 0.004 247.9)",
+          "oklch(37% 0.005 247.9)",
+          "oklch(49% 0.005 247.9)",
+          "oklch(61% 0.005 247.9)",
+          "oklch(73% 0.004 247.9)",
+          "oklch(85% 0.004 247.9)",
+          "oklch(95% 0.004 247.9)"
+        ]
+      },
+      "mast-muted": {
+        "role": "neutral",
+        "displayName": "Masthead Muted",
+        "canonical": "#a9b8c8",
+        "oklch": "oklch(77.6% 0.028 249.9)",
+        "theme": "light",
+        "cssVar": "--mast-muted",
+        "tonalRamp": [
+          "oklch(15% 0.012 249.9)",
+          "oklch(25% 0.020 249.9)",
+          "oklch(37% 0.028 249.9)",
+          "oklch(49% 0.028 249.9)",
+          "oklch(61% 0.028 249.9)",
+          "oklch(73% 0.021 249.9)",
+          "oklch(85% 0.012 249.9)",
+          "oklch(95% 0.004 249.9)"
+        ]
+      },
+      "error": {
+        "role": "error",
+        "displayName": "Fault Red",
+        "canonical": "#b42318",
+        "oklch": "oklch(50.0% 0.182 29.5)",
+        "theme": "light",
+        "cssVar": "--error",
+        "tonalRamp": [
+          "oklch(15% 0.076 29.5)",
+          "oklch(25% 0.127 29.5)",
+          "oklch(37% 0.182 29.5)",
+          "oklch(49% 0.182 29.5)",
+          "oklch(61% 0.182 29.5)",
+          "oklch(73% 0.138 29.5)",
+          "oklch(85% 0.076 29.5)",
+          "oklch(95% 0.025 29.5)"
+        ]
+      },
+      "night-stock": {
+        "role": "neutral",
+        "displayName": "Night Ticket Stock",
+        "canonical": "#0b131b",
+        "oklch": "oklch(18.3% 0.021 249.0)",
+        "theme": "dark",
+        "cssVar": "--stock",
+        "tonalRamp": [
+          "oklch(15% 0.009 249.0)",
+          "oklch(25% 0.014 249.0)",
+          "oklch(37% 0.021 249.0)",
+          "oklch(49% 0.021 249.0)",
+          "oklch(61% 0.021 249.0)",
+          "oklch(73% 0.016 249.0)",
+          "oklch(85% 0.009 249.0)",
+          "oklch(95% 0.004 249.0)"
+        ]
+      },
+      "night-paper": {
+        "role": "neutral",
+        "displayName": "Night Printed Paper",
+        "canonical": "#121d28",
+        "oklch": "oklch(22.6% 0.027 249.1)",
+        "theme": "dark",
+        "cssVar": "--paper",
+        "tonalRamp": [
+          "oklch(15% 0.011 249.1)",
+          "oklch(25% 0.019 249.1)",
+          "oklch(37% 0.027 249.1)",
+          "oklch(49% 0.027 249.1)",
+          "oklch(61% 0.027 249.1)",
+          "oklch(73% 0.020 249.1)",
+          "oklch(85% 0.011 249.1)",
+          "oklch(95% 0.004 249.1)"
+        ]
+      },
+      "night-ink": {
+        "role": "neutral",
+        "displayName": "Night Navy Ink",
+        "canonical": "#e4ebf2",
+        "oklch": "oklch(93.7% 0.012 248.0)",
+        "theme": "dark",
+        "cssVar": "--ink",
+        "tonalRamp": [
+          "oklch(15% 0.005 248.0)",
+          "oklch(25% 0.008 248.0)",
+          "oklch(37% 0.012 248.0)",
+          "oklch(49% 0.012 248.0)",
+          "oklch(61% 0.012 248.0)",
+          "oklch(73% 0.009 248.0)",
+          "oklch(85% 0.005 248.0)",
+          "oklch(95% 0.004 248.0)"
+        ]
+      },
+      "night-ink-muted": {
+        "role": "neutral",
+        "displayName": "Night Faded Ink",
+        "canonical": "#9fb1c4",
+        "oklch": "oklch(75.3% 0.034 249.7)",
+        "theme": "dark",
+        "cssVar": "--ink-muted",
+        "tonalRamp": [
+          "oklch(15% 0.014 249.7)",
+          "oklch(25% 0.024 249.7)",
+          "oklch(37% 0.034 249.7)",
+          "oklch(49% 0.034 249.7)",
+          "oklch(61% 0.034 249.7)",
+          "oklch(73% 0.026 249.7)",
+          "oklch(85% 0.014 249.7)",
+          "oklch(95% 0.005 249.7)"
+        ]
+      },
+      "night-rule": {
+        "role": "neutral",
+        "displayName": "Night Hairline Rule",
+        "canonical": "#26384a",
+        "oklch": "oklch(33.3% 0.040 249.1)",
+        "theme": "dark",
+        "cssVar": "--rule",
+        "tonalRamp": [
+          "oklch(15% 0.017 249.1)",
+          "oklch(25% 0.028 249.1)",
+          "oklch(37% 0.040 249.1)",
+          "oklch(49% 0.040 249.1)",
+          "oklch(61% 0.040 249.1)",
+          "oklch(73% 0.030 249.1)",
+          "oklch(85% 0.017 249.1)",
+          "oklch(95% 0.006 249.1)"
+        ]
+      },
+      "night-perf": {
+        "role": "neutral",
+        "displayName": "Night Perforation Grey",
+        "canonical": "#3b5168",
+        "oklch": "oklch(42.7% 0.047 250.1)",
+        "theme": "dark",
+        "cssVar": "--perf",
+        "tonalRamp": [
+          "oklch(15% 0.020 250.1)",
+          "oklch(25% 0.033 250.1)",
+          "oklch(37% 0.047 250.1)",
+          "oklch(49% 0.047 250.1)",
+          "oklch(61% 0.047 250.1)",
+          "oklch(73% 0.036 250.1)",
+          "oklch(85% 0.020 250.1)",
+          "oklch(95% 0.007 250.1)"
+        ]
+      },
+      "night-route": {
+        "role": "secondary",
+        "displayName": "Night Route Blue",
+        "canonical": "#6f9be8",
+        "oklch": "oklch(69.0% 0.124 261.1)",
+        "theme": "dark",
+        "cssVar": "--route",
+        "tonalRamp": [
+          "oklch(15% 0.052 261.1)",
+          "oklch(25% 0.087 261.1)",
+          "oklch(37% 0.124 261.1)",
+          "oklch(49% 0.124 261.1)",
+          "oklch(61% 0.124 261.1)",
+          "oklch(73% 0.094 261.1)",
+          "oklch(85% 0.052 261.1)",
+          "oklch(95% 0.017 261.1)"
+        ]
+      },
+      "night-signal": {
+        "role": "primary",
+        "displayName": "Night Signal Orange",
+        "canonical": "#ff7a2e",
+        "oklch": "oklch(72.5% 0.182 46.2)",
+        "theme": "dark",
+        "cssVar": "--signal",
+        "tonalRamp": [
+          "oklch(15% 0.077 46.2)",
+          "oklch(25% 0.128 46.2)",
+          "oklch(37% 0.182 46.2)",
+          "oklch(49% 0.182 46.2)",
+          "oklch(61% 0.182 46.2)",
+          "oklch(73% 0.138 46.2)",
+          "oklch(85% 0.077 46.2)",
+          "oklch(95% 0.026 46.2)"
+        ]
+      },
+      "night-signal-ink": {
+        "role": "primary",
+        "displayName": "Night Signal Ink",
+        "canonical": "#ff8f4d",
+        "oklch": "oklch(75.9% 0.157 49.1)",
+        "theme": "dark",
+        "cssVar": "--signal-ink",
+        "tonalRamp": [
+          "oklch(15% 0.066 49.1)",
+          "oklch(25% 0.110 49.1)",
+          "oklch(37% 0.157 49.1)",
+          "oklch(49% 0.157 49.1)",
+          "oklch(61% 0.157 49.1)",
+          "oklch(73% 0.119 49.1)",
+          "oklch(85% 0.066 49.1)",
+          "oklch(95% 0.022 49.1)"
+        ]
+      },
+      "night-mast": {
+        "role": "neutral",
+        "displayName": "Night Masthead Navy",
+        "canonical": "#060c12",
+        "oklch": "oklch(15.1% 0.017 246.6)",
+        "theme": "dark",
+        "cssVar": "--mast",
+        "tonalRamp": [
+          "oklch(15% 0.007 246.6)",
+          "oklch(25% 0.012 246.6)",
+          "oklch(37% 0.017 246.6)",
+          "oklch(49% 0.017 246.6)",
+          "oklch(61% 0.017 246.6)",
+          "oklch(73% 0.013 246.6)",
+          "oklch(85% 0.007 246.6)",
+          "oklch(95% 0.004 246.6)"
+        ]
+      },
+      "night-mast-muted": {
+        "role": "neutral",
+        "displayName": "Night Masthead Muted",
+        "canonical": "#8fa3b8",
+        "oklch": "oklch(70.7% 0.038 249.7)",
+        "theme": "dark",
+        "cssVar": "--mast-muted",
+        "tonalRamp": [
+          "oklch(15% 0.016 249.7)",
+          "oklch(25% 0.027 249.7)",
+          "oklch(37% 0.038 249.7)",
+          "oklch(49% 0.038 249.7)",
+          "oklch(61% 0.038 249.7)",
+          "oklch(73% 0.029 249.7)",
+          "oklch(85% 0.016 249.7)",
+          "oklch(95% 0.005 249.7)"
+        ]
+      },
+      "night-error": {
+        "role": "error",
+        "displayName": "Night Fault Red",
+        "canonical": "#ff7b72",
+        "oklch": "oklch(73.4% 0.163 25.8)",
+        "theme": "dark",
+        "cssVar": "--error",
+        "tonalRamp": [
+          "oklch(15% 0.068 25.8)",
+          "oklch(25% 0.114 25.8)",
+          "oklch(37% 0.163 25.8)",
+          "oklch(49% 0.163 25.8)",
+          "oklch(61% 0.163 25.8)",
+          "oklch(73% 0.123 25.8)",
+          "oklch(85% 0.068 25.8)",
+          "oklch(95% 0.023 25.8)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "The name in the masthead only. Uppercase."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section titles on a 2px ink rule. Uppercase."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Leg titles; siblings for cities, stations, passes, entries. Uppercase."
+      },
+      "role": {
+        "displayName": "Role",
+        "purpose": "Masthead role line, set in signal. Uppercase."
+      },
+      "lede": {
+        "displayName": "Lede",
+        "purpose": "Opening paragraph of a ticket, max 38em."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Reading text with tabular numerals, max 42em."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Field labels on stubs, summary facts, form fields, table heads. Uppercase, reading face."
+      },
+      "mono": {
+        "displayName": "Mono",
+        "purpose": "Dates, year ranges, project refs, certificate numbers."
+      },
+      "mono-caps": {
+        "displayName": "Mono caps",
+        "purpose": "Masthead running head and the stamp line. Uppercase."
+      }
+    },
+    "shadows": [
+      {
+        "name": "panel-lift",
+        "value": "0 1px 2px rgba(19, 32, 43, 0.06), 0 6px 20px rgba(19, 32, 43, 0.06)",
+        "purpose": "Tickets, boarding passes, summary stub."
+      },
+      {
+        "name": "panel-rest",
+        "value": "0 1px 2px rgba(19, 32, 43, 0.05)",
+        "purpose": "Legs, manifest tables, entry lists."
+      },
+      {
+        "name": "live-halo",
+        "value": "0 0 0 5px color-mix(in srgb, var(--signal) 22%, transparent)",
+        "purpose": "Current station marker in the route strip."
+      },
+      {
+        "name": "live-tick",
+        "value": "0 0 0 3px var(--stock), 0 0 0 6px color-mix(in srgb, var(--signal) 30%, transparent)",
+        "purpose": "Current leg tick on the experience rail."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Every transition and the load moment (--ease-out)."
+      },
+      {
+        "name": "state",
+        "value": "0.2s",
+        "purpose": "Colour, border and background state changes."
+      },
+      {
+        "name": "press",
+        "value": "translateY(1px), 0.12s ease-out",
+        "purpose": "Button active."
+      },
+      {
+        "name": "route-draw",
+        "value": "scaleX(0) to none, 1.1s ease-out, 0.15s delay",
+        "purpose": "Route line draws Klaten to Jakarta on load; only with JS and prefers-reduced-motion: no-preference."
+      },
+      {
+        "name": "strike",
+        "value": "scale(0.4) to none, 0.5s ease-out, 1.05s delay",
+        "purpose": "Jakarta marker strikes in as the line arrives."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "wide",
+        "value": "1100px"
+      },
+      {
+        "name": "stack",
+        "value": "860px"
+      },
+      {
+        "name": "stub",
+        "value": "760px"
+      },
+      {
+        "name": "phone",
+        "value": "600px"
+      }
+    ],
+    "themes": {
+      "light": "Tokens on :root (color-scheme: light).",
+      "dark": "night mixin: applied under prefers-color-scheme: dark on :root:not([data-theme=\"light\"]), and on :root[data-theme=\"dark\"]. Same custom property names; values are the night-* color keys. mast-ink takes night-ink; focus, on-signal and signal-hover are not redefined.",
+      "contrastMore": "--rule and --perf become currentColor; --ink-muted becomes --ink.",
+      "print": "stock, paper, mast to #fff; ink and mast-ink to #000; panels trade shadow for a 1px #bbb border."
+    }
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The one call to act: download the résumé, send the message.",
+      "html": "<button class=\"ds-btn-primary\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 3v12m0 0-5-5m5 5 5-5M5 21h14\"/></svg>Download résumé</button>",
+      "css": ".ds-btn-primary{display:inline-flex;align-items:center;gap:.55rem;min-height:2.875rem;padding:0 1.25rem;border:1px solid transparent;border-radius:2px;background:var(--signal, #f25c05);color:#1a0a00;font:600 1rem/1 \"Source Sans 3\",\"Segoe UI\",system-ui,sans-serif;cursor:pointer;transition:background-color .2s cubic-bezier(0.16,1,0.3,1),transform .12s ease-out}.ds-btn-primary svg{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}.ds-btn-primary:hover{background:#ff7424}.ds-btn-primary:active{transform:translateY(1px)}.ds-btn-primary:focus-visible{outline:2px solid var(--focus, #f25c05);outline-offset:3px;border-radius:2px}"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Secondary action, on the navy masthead only.",
+      "html": "<div class=\"ds-mast\"><button class=\"ds-btn-ghost\">Send a message</button></div>",
+      "css": ".ds-mast{background:var(--mast, #13202b);padding:1.5rem}.ds-btn-ghost{display:inline-flex;align-items:center;min-height:2.875rem;padding:0 1.25rem;background:transparent;border:1px solid currentColor;border-radius:2px;color:var(--mast-ink, #eef1f4);font:600 1rem/1 \"Source Sans 3\",\"Segoe UI\",system-ui,sans-serif;cursor:pointer;transition:background-color .2s cubic-bezier(0.16,1,0.3,1),transform .12s ease-out}.ds-btn-ghost:hover{background:rgba(255,255,255,.08)}.ds-btn-ghost:active{transform:translateY(1px)}.ds-btn-ghost:focus-visible{outline:2px solid var(--focus, #f25c05);outline-offset:3px;border-radius:2px}"
+    },
+    {
+      "name": "Text Field",
+      "kind": "input",
+      "refersTo": "input-field",
+      "description": "Underlined stock well with a reading-face label; focus turns the underline signal.",
+      "html": "<label class=\"ds-field\"><span class=\"ds-field__label\">Your email</span><input type=\"email\" placeholder=\"name@company.com\"></label>",
+      "css": ".ds-field{display:grid;gap:.35rem;font:400 1.0625rem/1.6 \"Source Sans 3\",\"Segoe UI\",system-ui,sans-serif}.ds-field__label{font:600 .75rem/1.3 \"Source Sans 3\",\"Segoe UI\",system-ui,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-muted, #44546a)}.ds-field input{font:inherit;color:var(--ink, #13202b);caret-color:var(--signal, #f25c05);padding:.75rem .85rem;background:var(--stock, #eef1f4);border:0;border-bottom:2px solid var(--ink-muted, #44546a);border-radius:2px 2px 0 0;transition:border-color .2s cubic-bezier(0.16,1,0.3,1),background-color .2s cubic-bezier(0.16,1,0.3,1)}.ds-field input:hover{border-bottom-color:var(--ink, #13202b)}.ds-field input:focus{outline:none;border-bottom-color:var(--signal, #f25c05);background:color-mix(in srgb, var(--signal, #f25c05) 6%, var(--stock, #eef1f4))}.ds-field input:user-invalid{border-bottom-color:var(--error, #b42318)}"
+    },
+    {
+      "name": "Section Index",
+      "kind": "nav",
+      "refersTo": "index-link",
+      "description": "Sticky list of sections; the active item fills its ring with signal.",
+      "html": "<nav class=\"ds-index\"><ul><li><a href=\"#\" class=\"is-active\">Experience</a></li><li><a href=\"#\">Projects</a></li><li><a href=\"#\">Skills</a></li></ul></nav>",
+      "css": ".ds-index ul{list-style:none;margin:0;padding:0;border-top:2px solid var(--ink, #13202b);max-width:11rem}.ds-index li{border-bottom:1px solid var(--rule, #c3ccd6)}.ds-index a{display:flex;align-items:center;gap:.6rem;padding:.6rem 0;font:600 .9375rem/1.6 \"Source Sans 3\",\"Segoe UI\",system-ui,sans-serif;color:var(--ink-muted, #44546a);text-decoration:none;transition:color .2s cubic-bezier(0.16,1,0.3,1)}.ds-index a::before{content:\"\";width:.5rem;height:.5rem;border-radius:50%;border:2px solid currentColor;flex:none;transition:background-color .2s cubic-bezier(0.16,1,0.3,1),border-color .2s cubic-bezier(0.16,1,0.3,1)}.ds-index a:hover,.ds-index a.is-active{color:var(--ink, #13202b)}.ds-index a.is-active::before{background:var(--signal, #f25c05);border-color:var(--signal, #f25c05)}.ds-index a:focus-visible{outline:2px solid var(--focus, #f25c05);outline-offset:3px;border-radius:2px}"
+    },
+    {
+      "name": "Route Strip",
+      "kind": "custom",
+      "description": "Signature: three stations on one route-blue line; the current station struck in signal.",
+      "html": "<ol class=\"ds-route\"><li><a href=\"#\"><span class=\"ds-route__city\">Klaten</span><span class=\"ds-route__meta\"><time>2014</time> School, IT support</span></a></li><li><a href=\"#\"><span class=\"ds-route__city\">Yogyakarta</span><span class=\"ds-route__meta\"><time>2016</time> University</span></a></li><li class=\"is-now\"><a href=\"#\"><span class=\"ds-route__city\">Jakarta</span><span class=\"ds-route__meta\"><time>2021</time> SRE, DevOps</span></a></li></ol>",
+      "css": ".ds-route{--dot:1.25rem;position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:0;padding:1.75rem 1.5rem 1.5rem;list-style:none;background:var(--paper, #ffffff);border-top:2px dashed var(--perf, #9aa7b5);border-bottom:2px dashed var(--perf, #9aa7b5)}.ds-route::before{content:\"\";position:absolute;left:calc(1.5rem + var(--dot) / 2);right:0;top:calc(1.75rem + var(--dot) / 2 - 2px);height:4px;background:var(--route, #1f4fa8)}.ds-route li{position:relative}.ds-route a{display:block;padding-top:calc(var(--dot) + .85rem);text-decoration:none;color:var(--ink, #13202b);border-radius:2px}.ds-route a::before{content:\"\";position:absolute;left:0;top:0;width:var(--dot);height:var(--dot);box-sizing:border-box;border-radius:50%;background:var(--paper, #ffffff);border:4px solid var(--route, #1f4fa8);transition:transform .3s cubic-bezier(0.16,1,0.3,1)}.ds-route a:hover::before{transform:scale(1.2)}.ds-route a:hover .ds-route__city{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:.15em}.ds-route a:focus-visible{outline:2px solid var(--focus, #f25c05);outline-offset:3px;border-radius:2px}.ds-route .is-now a::before{background:var(--signal, #f25c05);border-color:var(--signal, #f25c05);box-shadow:0 0 0 5px color-mix(in srgb, var(--signal, #f25c05) 22%, transparent)}.ds-route__city{display:block;font:700 clamp(1.375rem,3.2vw,2.125rem)/1 \"Barlow Condensed\",\"Arial Narrow\",sans-serif;text-transform:uppercase;letter-spacing:.01em}.ds-route .is-now .ds-route__city{color:var(--signal-ink, #b93f00)}.ds-route__meta{display:block;margin-top:.4rem;font:400 .9375rem/1.35 \"Source Sans 3\",\"Segoe UI\",system-ui,sans-serif;color:var(--ink-muted, #44546a)}.ds-route__meta time{font:500 .8125rem/1 \"JetBrains Mono\",ui-monospace,\"Cascadia Mono\",Consolas,monospace;color:var(--ink, #13202b);margin-right:.35rem}"
+    },
+    {
+      "name": "Leg with Stamp",
+      "kind": "card",
+      "refersTo": "leg",
+      "description": "A dated itinerary entry; only the current leg carries the IN SERVICE stamp.",
+      "html": "<article class=\"ds-leg\"><p class=\"ds-leg__when\">Mar 2023 – Present</p><h4 class=\"ds-leg__title\">DevOps Engineer</h4><p class=\"ds-leg__org\">MEMBER.ID · Full-time</p><span class=\"ds-stamp\"><b>In service</b> since Mar 2023</span><p>Maintains cloud infrastructure and the pipelines that ship to it.</p></article>",
+      "css": ".ds-leg{position:relative;padding:clamp(1.25rem,3vw,1.75rem);background:var(--paper, #ffffff);border-radius:3px;box-shadow:0 1px 2px rgba(19,32,43,.05);color:var(--ink, #13202b);font:400 1.0625rem/1.6 \"Source Sans 3\",\"Segoe UI\",system-ui,sans-serif}.ds-leg p,.ds-leg h4{margin:0}.ds-leg__when{font:500 .8125rem/1.3 \"JetBrains Mono\",ui-monospace,\"Cascadia Mono\",Consolas,monospace;letter-spacing:.03em;color:var(--ink-muted, #44546a)}.ds-leg .ds-leg__title{margin-top:.4rem;padding-right:9.5rem;font:700 clamp(1.375rem,2.6vw,1.75rem)/1.05 \"Barlow Condensed\",\"Arial Narrow\",sans-serif;text-transform:uppercase;letter-spacing:.01em}.ds-leg .ds-leg__org{margin:.25rem 0 .85rem;font-weight:600;color:var(--route, #1f4fa8)}.ds-stamp{position:absolute;right:clamp(1rem,3vw,1.75rem);top:clamp(1rem,3vw,1.5rem);display:grid;justify-items:center;gap:.15rem;padding:.45rem .75rem;border:2px solid var(--signal-ink, #b93f00);outline:1px solid var(--signal-ink, #b93f00);outline-offset:2px;border-radius:3px;color:var(--signal-ink, #b93f00);font:500 .6875rem/1.3 \"JetBrains Mono\",ui-monospace,\"Cascadia Mono\",Consolas,monospace;letter-spacing:.1em;text-transform:uppercase;transform:rotate(-5deg)}.ds-stamp b{font:700 1.125rem/1 \"Barlow Condensed\",\"Arial Narrow\",sans-serif;letter-spacing:.06em}"
+    },
+    {
+      "name": "Ticket with Stub",
+      "kind": "card",
+      "refersTo": "ticket",
+      "description": "Main part plus a perforated stub with punched notches; the stub carries labelled facts.",
+      "html": "<div class=\"ds-ticket\"><div class=\"ds-ticket__main\"><p class=\"ds-lede\">I keep production steady.</p><p>Cloud infrastructure, on-premises Linux and the CI/CD pipelines that ship to them.</p></div><dl class=\"ds-ticket__stub\"><div><dt>Base</dt><dd>South Jakarta</dd></div><div><dt>Platform</dt><dd>Kubernetes · Linux · CI/CD</dd></div></dl></div>",
+      "css": ".ds-ticket{display:grid;grid-template-columns:minmax(0,1fr) 16.5rem;background:var(--paper, #ffffff);border-radius:3px;box-shadow:0 1px 2px rgba(19,32,43,.06),0 6px 20px rgba(19,32,43,.06);color:var(--ink, #13202b);font:400 1.0625rem/1.6 \"Source Sans 3\",\"Segoe UI\",system-ui,sans-serif}.ds-ticket p,.ds-ticket dl,.ds-ticket dd{margin:0}.ds-ticket__main{padding:clamp(1.5rem,3.5vw,2.25rem)}.ds-ticket__main>p+p{margin-top:1rem}.ds-lede{font-size:clamp(1.1875rem,2vw,1.375rem);line-height:1.5;font-weight:600;max-width:38em}.ds-ticket__stub{position:relative;padding:clamp(1.5rem,3.5vw,2.25rem);border-left:2px dashed var(--perf, #9aa7b5)}.ds-ticket__stub::before,.ds-ticket__stub::after{content:\"\";position:absolute;left:-.75rem;width:1.375rem;height:1.375rem;border-radius:50%;background:var(--stock, #eef1f4)}.ds-ticket__stub::before{top:-.7rem}.ds-ticket__stub::after{bottom:-.7rem}.ds-ticket__stub div+div{margin-top:1rem}.ds-ticket__stub dt{font:600 .75rem/1.3 \"Source Sans 3\",\"Segoe UI\",system-ui,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-muted, #44546a)}.ds-ticket__stub dd{margin-top:.2rem;font-weight:600;line-height:1.35}"
+    },
+    {
+      "name": "Inline Link",
+      "kind": "custom",
+      "description": "Route-blue link with a soft underline and a nudging arrow.",
+      "html": "<a class=\"ds-link\" href=\"#\">View on GitHub<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M7 17 17 7M9 7h8v8\"/></svg></a>",
+      "css": ".ds-link{display:inline-flex;align-items:center;gap:.35rem;color:var(--route, #1f4fa8);font:600 1.0625rem/1.6 \"Source Sans 3\",\"Segoe UI\",system-ui,sans-serif;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.22em;text-decoration-color:color-mix(in srgb, var(--route, #1f4fa8) 40%, transparent)}.ds-link:hover{text-decoration-color:currentColor}.ds-link svg{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:transform .25s cubic-bezier(0.16,1,0.3,1)}.ds-link:hover svg{transform:translate(2px,-2px)}.ds-link:focus-visible{outline:2px solid var(--focus, #f25c05);outline-offset:3px;border-radius:2px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Itinerary",
+    "overview": "The CV is an itinerary of record: a dated, confirmed route of legs from Klaten through Yogyakarta to Jakarta, printed on cool ticket stock, with the current leg struck forward in signal orange and stamped IN SERVICE. Every surface is a part of a travel document: a navy masthead band with a mono running head, a white route strip, ticket panels with perforated stubs, boarding passes for projects, manifest tables for skills and certifications.\n\nThe page is calm and dense in the way a timetable is dense: two inks on stock, condensed capitals for names and places, a plain reading face for everything a person reads, and mono reserved for the things a ticket would print by machine (dates, refs, codes). One continuous route line runs through the experience section and the route strip; stations are round markers on it. Depth is paper resting on stock, not floating cards.\n\nRejected by the world itself: cards with coloured side borders, gradients, glass. The build carries none of them.",
+    "keyCharacteristics": [
+      "Two inks (navy ink, route blue) plus one live signal orange on cool stock.",
+      "Barlow Condensed caps for names, cities and titles; Source Sans 3 for reading and field labels; JetBrains Mono for dates, refs, codes only.",
+      "Dashed perforation rules separate ticket parts; punched notches where perforations meet edges.",
+      "One continuous 4px route line with round station markers.",
+      "Near-square corners (2px controls, 3px panels).",
+      "Light and dark (\"night\") themes from the same token names; one load-time motion moment."
+    ],
+    "rules": [
+      {
+        "name": "The One Live State Rule",
+        "body": "Signal orange marks only what is current or what acts: the current leg, the current station, the active index item, the primary action, focus. Past legs are plain route blue. Nothing is orange for decoration.",
+        "section": "colors"
+      },
+      {
+        "name": "The Signal-Ink Rule",
+        "body": "Orange as text or stroke on paper or stock uses `signal-ink`, never `signal`. Fills use `signal` with `on-signal` text.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two Inks Rule",
+        "body": "Navy ink and route blue on stock and paper. No gradients, no third accent hue.",
+        "section": "colors"
+      },
+      {
+        "name": "The Three Voices Rule",
+        "body": "Condensed caps for names, places and titles; Source Sans 3 for everything read, including field labels; JetBrains Mono only for dates, refs and codes. A label is never set in mono.",
+        "section": "typography"
+      },
+      {
+        "name": "The One Line Rule",
+        "body": "A single continuous route line governs the page: 4px of route blue, drawn across the route strip and down the experience rail. Stations are round markers on it; legs are small round ticks. Do not add a second line system.",
+        "section": "layout"
+      },
+      {
+        "name": "The Printed Panel Rule",
+        "body": "Panels rest on stock; they never float. Shadows are ambient and ink-tinted, never hard offset, never coloured. Separation inside a panel is a perforation.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do reserve signal orange for the current state and the primary action (The One Live State Rule).",
+      "Do use `signal-ink` for orange text or strokes on paper and stock, and `on-signal` text on signal fills.",
+      "Do separate parts of a panel with 2px dashed perforation in `perf`, with stock-filled notches where it meets an edge.",
+      "Do set names, cities and titles in Barlow Condensed caps; dates, refs and codes in JetBrains Mono; everything else, labels included, in Source Sans 3.",
+      "Do keep every new colour decision paired: define the token on `:root` and its counterpart in the `night` mixin.",
+      "Do keep motion to the single route-draw moment and respect reduced motion."
+    ],
+    "donts": [
+      "Don't use cards with coloured side borders, gradients or glass.",
+      "Don't add a second accent hue or a second route line.",
+      "Don't use hard offset shadows or coloured shadows on panels.",
+      "Don't set field labels or body text in mono.",
+      "Don't round panels beyond 3px; circles are for markers and notches only.",
+      "Don't stamp anything other than the current leg."
+    ]
+  }
+}

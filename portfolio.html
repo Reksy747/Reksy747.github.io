@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Portfolio — Petrus Chanel Reksy Arfila, DevOps &amp; Backend Engineer</title>
+    <meta name="description" content="Infrastructure, delivery and reliability case studies from Petrus Chanel Reksy Arfila, DevOps Engineer at MEMBER.ID and former Site Reliability Engineer at Pegipegi.">
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#13202b">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="preload" href="fonts/barlow-condensed-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/source-sans-3-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="css/styles.css">
+    <script>document.documentElement.classList.replace('no-js', 'js');</script>
+</head>
+
+<body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="masthead masthead--compact" id="top">
+        <div class="wrap">
+            <div class="running-head">
+                <span>Ref. REKSY747</span>
+                <nav class="page-switch" aria-label="Pages">
+                    <a href="index.html">CV</a>
+                    <a href="portfolio.html" aria-current="page">Portfolio</a>
+                </nav>
+            </div>
+            <div class="masthead__main">
+                <div class="masthead__id">
+                    <h1 class="masthead__name">Portfolio</h1>
+                    <p class="masthead__role">Petrus Chanel Reksy Arfila · DevOps &amp; Backend Engineer</p>
+                </div>
+                <div class="masthead__actions">
+                    <a class="btn btn--primary" href="https://drive.google.com/file/d/1SHfUOhkKift7SdeT7EdSMaQGtsuMURkG/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M5 21h14"/></svg>
+                        Download résumé
+                    </a>
+                    <a class="btn btn--ghost" href="index.html">View CV</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="wrap layout layout--two">
+        <nav class="index" aria-label="Sections">
+            <ul>
+                <li><a href="#scope">Operating scope</a></li>
+                <li><a href="#cases">Case studies</a></li>
+                <li><a href="#repositories">Repositories</a></li>
+                <li><a href="#troubleshooting">Troubleshooting</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+
+        <main id="main" class="column">
+            <p class="intro">Nearly five years designing, automating and maintaining infrastructure across cloud and on-premises environments: first as a Site Reliability Engineer at Pegipegi, now as a DevOps Engineer at MEMBER.ID. This page shows what I build and run, and how I work when production breaks.</p>
+
+            <!-- Operating scope: what I run, as a table -->
+            <section class="section" id="scope" aria-labelledby="scope-title">
+                <h2 class="section__title" id="scope-title">Operating scope</h2>
+                <table class="manifest manifest--record">
+                    <thead>
+                        <tr><th scope="col">Area</th><th scope="col">What I run</th><th scope="col">Where</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Cloud</th>
+                            <td>Google Cloud Platform, Alibaba Cloud, Amazon Web Services</td>
+                            <td>GCP and Alibaba Cloud at MEMBER.ID; GCP and AWS at Pegipegi</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">On-premises</th>
+                            <td>Linux servers for production and development</td>
+                            <td>MEMBER.ID</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Containers</th>
+                            <td>Kubernetes, Docker</td>
+                            <td>Kubernetes clusters on AWS at Pegipegi</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Delivery</th>
+                            <td>CI/CD pipelines with GitHub Actions, GitLab CI/CD and Jenkins</td>
+                            <td>Across roles</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Infrastructure as code</th>
+                            <td>Terraform, Bash automation</td>
+                            <td>Across roles</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Edge &amp; network</th>
+                            <td>NGINX, SSL/TLS certificates, DNS, load balancing, VPN</td>
+                            <td>MEMBER.ID; VPN also at Pegipegi</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Observability</th>
+                            <td>Monitoring, logging, New Relic, SLA dashboards</td>
+                            <td>New Relic and SLA dashboards at Pegipegi; monitoring and logging across roles</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Operations</th>
+                            <td>Incident response, troubleshooting, root cause analysis</td>
+                            <td>Across roles</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Case studies -->
+            <section class="section" id="cases" aria-labelledby="cases-title">
+                <h2 class="section__title" id="cases-title">Case studies</h2>
+
+                <article class="case" id="case-delivery" aria-labelledby="case1-title">
+                    <header class="case__head">
+                        <p class="leg__when">MEMBER.ID · Mar 2023 – Present</p>
+                        <h3 class="case__title" id="case1-title">Running production across GCP, Alibaba Cloud and on-prem Linux</h3>
+                        <p class="case__stack">GCP · Alibaba Cloud · Linux · CI/CD · NGINX · SSL/TLS · DNS · load balancing · VPN · Bash</p>
+                    </header>
+                    <dl class="case__body">
+                        <div>
+                            <dt>Context</dt>
+                            <dd>One engineering team shipping to three kinds of infrastructure: two clouds and on-premises Linux servers for production and development. My job is to keep it reliable, secure and available.</dd>
+                        </div>
+                        <div>
+                            <dt>What I do</dt>
+                            <dd>
+                                <ul class="leg__list">
+                                    <li>Design, build and maintain the CI/CD pipelines that automate deployment and release.</li>
+                                    <li>Run the traffic path into production services: DNS, load balancing, NGINX and SSL/TLS certificates.</li>
+                                    <li>Automate operational tasks with Bash scripts to cut manual work.</li>
+                                    <li>Maintain VPN services and secure network connectivity for the engineering team.</li>
+                                    <li>Work with software engineers on deployment workflows, reliability and platform performance.</li>
+                                </ul>
+                            </dd>
+                        </div>
+                        <div>
+                            <dt>Why it matters</dt>
+                            <dd>Engineers get one predictable way to ship, whichever platform a service lives on, with fewer manual steps between commit and production.</dd>
+                        </div>
+                    </dl>
+                </article>
+
+                <article class="case" id="case-k8s-cost" aria-labelledby="case2-title">
+                    <header class="case__head">
+                        <p class="leg__when">Pegipegi · Nov 2021 – Jan 2023</p>
+                        <h3 class="case__title" id="case2-title">Right-sizing Kubernetes on AWS</h3>
+                        <p class="case__stack">AWS · Kubernetes · spot VMs · taints · autoscaling · CronJobs · resource tagging</p>
+                    </header>
+                    <dl class="case__body">
+                        <div>
+                            <dt>Context</dt>
+                            <dd>Application products ran on Kubernetes clusters on AWS, alongside GCP. Cluster resources needed to match real demand, and spend needed to be attributable.</dd>
+                        </div>
+                        <div>
+                            <dt>What I did</dt>
+                            <dd>
+                                <ul class="leg__list">
+                                    <li>Researched and implemented spot VMs on the AWS clusters, with taints to control which workloads run on them.</li>
+                                    <li>Implemented autoscaling and moved scheduled work to Kubernetes CronJobs.</li>
+                                    <li>Optimized cluster resources.</li>
+                                    <li>Wrote a tagging script to tag every AWS resource.</li>
+                                </ul>
+                            </dd>
+                        </div>
+                        <div>
+                            <dt>Why it matters</dt>
+                            <dd>Spot capacity and autoscaling are the main levers on Kubernetes compute cost, and consistent tags are what make cloud cost visible per resource.</dd>
+                        </div>
+                    </dl>
+                </article>
+
+                <article class="case" id="case-sla" aria-labelledby="case3-title">
+                    <header class="case__head">
+                        <p class="leg__when">Pegipegi · Nov 2021 – Jan 2023</p>
+                        <h3 class="case__title" id="case3-title">Uptime monitoring and SLA dashboards for engineering tools</h3>
+                        <p class="case__stack">New Relic · Kubernetes · SLA dashboards · AWS API Gateway · EC2 · notifications</p>
+                    </header>
+                    <dl class="case__body">
+                        <div>
+                            <dt>Context</dt>
+                            <dd>I maintained the engineering tools the rest of the company built and shipped with, so their uptime was everyone&rsquo;s uptime.</dd>
+                        </div>
+                        <div>
+                            <dt>What I did</dt>
+                            <dd>
+                                <ul class="leg__list">
+                                    <li>Implemented New Relic for Kubernetes to monitor engineering-tool uptime.</li>
+                                    <li>Built a custom SLA dashboard in New Relic.</li>
+                                    <li>Created notifications that check the IPs of AWS API Gateway and EC2.</li>
+                                    <li>Built pipelines to deploy application products to GCP and AWS.</li>
+                                </ul>
+                            </dd>
+                        </div>
+                        <div>
+                            <dt>Why it matters</dt>
+                            <dd>An SLA only means something when it is measured; the dashboard gave the team a shared view of availability.</dd>
+                        </div>
+                    </dl>
+                </article>
+            </section>
+
+            <!-- Repositories: solo-built, public and private -->
+            <section class="section" id="repositories" aria-labelledby="repos-title">
+                <h2 class="section__title" id="repos-title">Repositories</h2>
+                <p class="section__lede">Projects I built, on my own unless noted. Public repositories link to GitHub; private ones can be walked through on request.</p>
+                <ol class="repos">
+                    <li class="repo">
+                        <div class="repo__head">
+                            <h3 class="repo__name"><a href="https://github.com/Reksy747/Golang-On-Cluster-GKE" target="_blank" rel="noopener noreferrer">Golang-On-Cluster-GKE</a></h3>
+                            <span class="repo__vis">Public</span>
+                        </div>
+                        <p>A Go web service (gorilla/mux) with tests for every route, shipped by a GitHub Actions pipeline: build, test, package with Docker, push to Docker Hub, and deploy to a Google Kubernetes Engine cluster behind a load balancer.</p>
+                        <p class="repo__stack">Go · Docker · Docker Hub · GitHub Actions · GKE · Kubernetes manifests · gcloud</p>
+                    </li>
+                    <li class="repo">
+                        <div class="repo__head">
+                            <h3 class="repo__name">CICD-Deploy-Java-Spring</h3>
+                            <span class="repo__vis repo__vis--private">Private</span>
+                        </div>
+                        <p>A Spring Boot web app (Thymeleaf) serving my online portfolio, with MockMvc tests on its routes, shipped by a GitHub Actions pipeline: Gradle build and test, Docker image pushed to Docker Hub, and deployment to Google Kubernetes Engine.</p>
+                        <p class="repo__stack">Java 11 · Spring Boot · Gradle · MockMvc · Docker · Docker Hub · GitHub Actions · GKE · gcloud</p>
+                        <p class="repo__note">Built with a collaborator.</p>
+                    </li>
+                    <li class="repo">
+                        <div class="repo__head">
+                            <h3 class="repo__name">testgan2</h3>
+                            <span class="repo__vis repo__vis--private">Private</span>
+                        </div>
+                        <p>A Jenkins pipeline for a Java service: checkout, Gradle build on a GCP build agent, then a Docker image tagged by build time and pushed to Amazon ECR, with a Kubernetes service manifest and New Relic agent configuration alongside.</p>
+                        <p class="repo__stack">Jenkins · Groovy · Gradle · Java · Docker · Amazon ECR · Kubernetes · New Relic</p>
+                    </li>
+                    <li class="repo">
+                        <div class="repo__head">
+                            <h3 class="repo__name"><a href="https://github.com/Reksy747/testgan" target="_blank" rel="noopener noreferrer">testgan</a></h3>
+                            <span class="repo__vis">Public</span>
+                        </div>
+                        <p>A containerised Java service built with Gradle, used as the base application for pipeline experiments.</p>
+                        <p class="repo__stack">Java · Gradle · Docker</p>
+                    </li>
+                    <li class="repo">
+                        <div class="repo__head">
+                            <h3 class="repo__name">reksytestrail</h3>
+                            <span class="repo__vis repo__vis--private">Private</span>
+                        </div>
+                        <p>A full-stack Nuxt application with its own server API and data models, GitHub Actions workflows, and enforced commit conventions with Husky and commitlint.</p>
+                        <p class="repo__stack">Nuxt · Vue · Node server · GitHub Actions · Husky · commitlint</p>
+                    </li>
+                    <li class="repo">
+                        <div class="repo__head">
+                            <h3 class="repo__name"><a href="https://github.com/Reksy747/dutani" target="_blank" rel="noopener noreferrer">dutani</a></h3>
+                            <span class="repo__vis">Public</span>
+                        </div>
+                        <p>The Dutatani e-learning web application for sharing agricultural knowledge, with admin and teacher roles.</p>
+                        <p class="repo__stack">Laravel · PHP · MySQL</p>
+                    </li>
+                    <li class="repo">
+                        <div class="repo__head">
+                            <h3 class="repo__name"><a href="https://github.com/Reksy747/Adblock-list" target="_blank" rel="noopener noreferrer">Adblock-list</a></h3>
+                            <span class="repo__vis">Public</span>
+                        </div>
+                        <p>A domain blocklist for Pi-hole and ad blockers.</p>
+                        <p class="repo__stack">Pi-hole · DNS</p>
+                    </li>
+                </ol>
+            </section>
+
+            <!-- Troubleshooting: how I work an incident -->
+            <section class="section" id="troubleshooting" aria-labelledby="troubleshooting-title">
+                <h2 class="section__title" id="troubleshooting-title">Troubleshooting</h2>
+                <p class="section__lede">Troubleshooting complex production issues is the part of the job I enjoy most. This is how I work an incident, from first signal to the change that stops it coming back.</p>
+
+                <article class="postmortem" aria-labelledby="method-title">
+                    <header class="postmortem__head">
+                        <h3 class="case__title" id="method-title">From alert to prevention</h3>
+                        <dl class="postmortem__meta">
+                            <div><dt>Scope</dt><dd>Infrastructure and application issues</dd></div>
+                            <div><dt>Tools</dt><dd>Monitoring, logging, New Relic</dd></div>
+                            <div><dt>Output</dt><dd>Root cause analysis</dd></div>
+                        </dl>
+                    </header>
+                    <ol class="postmortem__timeline">
+                        <li><span class="postmortem__step">Detect</span><p>Monitoring and alerting catch the problem, ideally before users do: uptime checks, SLA dashboards, and notifications on critical endpoints.</p></li>
+                        <li><span class="postmortem__step">Diagnose</span><p>Work from the symptom through the stack (DNS, load balancer, NGINX, certificates, the service and its host), using metrics and logs to rule layers out.</p></li>
+                        <li><span class="postmortem__step">Restore</span><p>Get service back first, while keeping the evidence needed to find the cause.</p></li>
+                        <li><span class="postmortem__step">Prevent</span><p>Write up the root cause and turn the fix into something durable: an alert, an automated check, or a script that removes the manual step.</p></li>
+                    </ol>
+                </article>
+            </section>
+
+            <!-- Contact -->
+            <section class="section" id="contact" aria-labelledby="contact-title">
+                <h2 class="section__title" id="contact-title">Contact</h2>
+                <div class="ticket">
+                    <div class="ticket__main">
+                        <p class="lede">Want the detail behind a case study, or to talk about a DevOps or backend role?</p>
+                        <p><a class="link" href="index.html#contact">Send a message from the CV page<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></a></p>
+                    </div>
+                    <div class="ticket__stub contact-stub">
+                        <ul class="social" aria-label="Profiles">
+                            <li><a href="https://linkedin.com/in/reksy/" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true" class="fill"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></svg>LinkedIn</a></li>
+                            <li><a href="https://github.com/Reksy747" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true" class="fill"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.56-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.16-1.18 3.16-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg>GitHub</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <footer class="footer">
+        <div class="wrap footer__inner">
+            <p>&copy; <span id="year">2026</span> Petrus Chanel Reksy Arfila</p>
+            <a href="#top">Back to top</a>
+        </div>
+    </footer>
+
+    <script src="js/scripts.min.js" defer></script>
+</body>
+
+</html>
