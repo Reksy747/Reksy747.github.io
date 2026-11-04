@@ -243,6 +243,12 @@ svg.fill { fill: currentColor; stroke: none; }
         color: var(--signal);
     }
 
+    &__stack {
+        margin-top: 0.45rem;
+        font: 500 0.8125rem/1.4 var(--mono);
+        color: var(--mast-ink);
+    }
+
     &__actions {
         display: flex;
         flex-wrap: wrap;
@@ -253,6 +259,12 @@ svg.fill { fill: currentColor; stroke: none; }
     @media (max-width: 860px) {
         &__main { grid-template-columns: auto 1fr; }
         &__actions { grid-column: 1 / -1; justify-content: flex-start; }
+    }
+
+    // Phones: both actions share one row so they stay in the first screen
+    @media (max-width: 520px) {
+        &__actions { flex-wrap: nowrap; }
+        &__actions .btn { flex: 1 1 auto; padding: 0 0.9rem; }
     }
 }
 
