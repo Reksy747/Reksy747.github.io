@@ -57,8 +57,32 @@
         });
     }
 
-    // Section index: mark where the reader is
-    const links = [...document.querySelectorAll('.index a')];
+    // Phone menu: the burger opens and closes the section list
+    const index = document.querySelector('.index');
+    const toggle = index && index.querySelector('.index__toggle');
+    const current = index && index.querySelector('.index__current');
+    const links = index ? [...index.querySelectorAll('a')] : [];
+
+    const setOpen = (open) => {
+        index.classList.toggle('is-open', open);
+        toggle.setAttribute('aria-expanded', String(open));
+    };
+
+    if (toggle) {
+        toggle.addEventListener('click', () => setOpen(!index.classList.contains('is-open')));
+        links.forEach((link) => link.addEventListener('click', () => setOpen(false)));
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && index.classList.contains('is-open')) {
+                setOpen(false);
+                toggle.focus();
+            }
+        });
+        document.addEventListener('click', (e) => {
+            if (!index.contains(e.target)) setOpen(false);
+        });
+    }
+
+    // Section index: mark where the reader is, and name it in the phone bar
     if (!links.length || !('IntersectionObserver' in window)) return;
 
     const setActive = (id) => {
@@ -67,11 +91,7 @@
             link.classList.toggle('is-active', on);
             if (on) {
                 link.setAttribute('aria-current', 'true');
-                // Keep the active tab visible in the phone tab strip
-                const strip = link.closest('.index');
-                if (strip.scrollWidth > strip.clientWidth) {
-                    strip.scrollTo({ left: link.offsetLeft - 16, behavior: reduceMotion.matches ? 'auto' : 'smooth' });
-                }
+                if (current) current.textContent = link.textContent;
             } else {
                 link.removeAttribute('aria-current');
             }

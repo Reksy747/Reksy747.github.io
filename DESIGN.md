@@ -208,7 +208,7 @@ Both themes share token names on `:root`; the night set (`night-*` keys) is appl
 - **Display** (700, clamp(2.25rem, 6vw, 4.5rem), 0.95, uppercase): the name in the masthead only; balanced wrap.
 - **Headline** (700, clamp(2rem, 4.2vw, 2.75rem), 1, uppercase): section titles, sat on a 2px ink rule.
 - **Title** (700, clamp(1.375rem, 2.6vw, 1.75rem), 1.05, uppercase): leg titles. Siblings at the same weight and case: route cities (clamp(1.375rem, 3.2vw, 2.125rem), 1), station names and pass titles (clamp(1.5rem, 3vw, 1.875rem) / clamp(1.5rem, 2.8vw, 1.875rem), 1), entry titles (1.375rem, 1.1), manifest row heads (1.1875rem, 1.3, 0.02em).
-- **Role** (600, clamp(1.125rem, 2.2vw, 1.5rem), 0.04em, uppercase): the masthead role line in signal.
+- **Role** (600, clamp(1.125rem, 2.2vw, 1.5rem), 0.04em, uppercase): the masthead role line in signal, naming title and employer ("DevOps Engineer · MEMBER.ID"). Under it, the masthead stack line in JetBrains Mono 500 at 0.8125rem/1.4 in `mast-ink`. On the CV the masthead carries two actions only (Download résumé, Contact), held on one row on phones; page links live in the running-head page switch.
 - **Lede** (600, clamp(1.1875rem, 2vw, 1.375rem), 1.5): opening paragraph of a ticket, max 38em. The summary lede uses body size at 600, 1.45.
 - **Body** (400, 1.0625rem, 1.6): reading text, max 42em in tickets and legs.
 - **Label** (600, 0.75rem, 0.1em, uppercase): field labels on ticket stubs, summary facts, form fields and table heads. Reading face, not mono.
@@ -271,7 +271,7 @@ Firm, flat and ticket-office plain.
 - **Error:** underline turns `error` on `:user-invalid`; status text in `error`, sent status in route blue.
 
 ### Navigation
-- **Section index:** 2px ink top rule, 1px rule between items, Source Sans 3 600 at 0.9375rem in faded ink with a small hollow ring before each label. Hover and active go to ink; the active ring fills signal. On phones it becomes a sticky horizontal tab strip on stock.
+- **Section index:** 2px ink top rule, 1px rule between items, Source Sans 3 600 at 0.9375rem in faded ink with a small hollow ring before each label. Hover and active go to ink; the active ring fills signal. On phones (860px and below) it becomes a slim sticky bar on stock: the current section name with a signal dot on the left, a drawn burger icon on the right (48px tall, turns to a close icon when open). The burger drops the full section list below the bar with panel lift and a 2px ink bottom rule; choosing a section, tapping outside or pressing Escape closes it. Without JS the list shows open.
 - **Route strip:** the career route as navigation: three stations on the route line, each a link to its station in Experience; the current station is filled signal with the live halo and its city set in signal ink. Hover scales the marker 1.2 and underlines the city.
 
 ### Rubber Stamp (signature)
