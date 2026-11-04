@@ -8,6 +8,22 @@
 
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
+    // Portfolio timeline: draw the line once it scrolls into view. The `motion` class is set
+    // only when the observer exists, so the line is never left hidden if this script fails.
+    const timelines = document.querySelectorAll('.postmortem__timeline');
+    if (timelines.length && 'IntersectionObserver' in window && !reduceMotion.matches) {
+        document.documentElement.classList.add('motion');
+        const draw = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-drawn');
+                    draw.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.35 });
+        timelines.forEach((el) => draw.observe(el));
+    }
+
     // Contact form: send in place and report status; plain POST remains the no-JS fallback
     const form = document.querySelector('.form');
     if (form && window.fetch) {

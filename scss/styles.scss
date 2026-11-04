@@ -38,6 +38,9 @@
     --mast: #13202b;
     --mast-ink: #eef1f4;
     --mast-muted: #a9b8c8;
+    --signal-hover: #ff7424;
+    --shadow-rest: 0 1px 2px rgba(19, 32, 43, 0.05);
+    --shadow-lift: 0 1px 2px rgba(19, 32, 43, 0.06), 0 6px 20px rgba(19, 32, 43, 0.06);
     --focus: #f25c05;
     --error: #b42318;
 
@@ -65,6 +68,9 @@
     --mast: #060c12;
     --mast-ink: #e4ebf2;
     --mast-muted: #8fa3b8;
+    --signal-hover: #ff9a5c;
+    --shadow-rest: 0 0 0 1px rgba(255, 255, 255, 0.06);
+    --shadow-lift: 0 0 0 1px rgba(255, 255, 255, 0.08), 0 8px 24px rgba(0, 0, 0, 0.45);
     --error: #ff7b72;
     color-scheme: dark;
 }
@@ -174,7 +180,7 @@ svg.fill { fill: currentColor; stroke: none; }
     &--primary {
         background: var(--signal);
         color: #1a0a00;
-        &:hover { background: #ff7424; }
+        &:hover { background: var(--signal-hover); }
     }
 
     &--ghost {
@@ -380,7 +386,7 @@ svg.fill { fill: currentColor; stroke: none; }
     padding: 1.5rem;
     background: var(--paper);
     border-radius: 3px;
-    box-shadow: 0 1px 2px rgba(19, 32, 43, 0.06), 0 6px 20px rgba(19, 32, 43, 0.06);
+    box-shadow: var(--shadow-lift);
 
     &__lede { font-weight: 600; line-height: 1.45; }
 
@@ -493,7 +499,7 @@ svg.fill { fill: currentColor; stroke: none; }
     grid-template-columns: minmax(0, 1fr) 16.5rem;
     background: var(--paper);
     border-radius: 3px;
-    box-shadow: 0 1px 2px rgba(19, 32, 43, 0.06), 0 6px 20px rgba(19, 32, 43, 0.06);
+    box-shadow: var(--shadow-lift);
 
     &__main { padding: clamp(1.5rem, 3.5vw, 2.25rem); }
     &__main > p + p { margin-top: 1rem; }
@@ -618,7 +624,7 @@ svg.fill { fill: currentColor; stroke: none; }
     padding: clamp(1.25rem, 3vw, 1.75rem);
     background: var(--paper);
     border-radius: 3px;
-    box-shadow: 0 1px 2px rgba(19, 32, 43, 0.05);
+    box-shadow: var(--shadow-rest);
 
     // Stop tick on the route line
     &::before {
@@ -736,13 +742,14 @@ svg.fill { fill: currentColor; stroke: none; }
     background: var(--paper);
     border-radius: 3px;
     overflow: hidden;
-    box-shadow: 0 1px 2px rgba(19, 32, 43, 0.06), 0 6px 20px rgba(19, 32, 43, 0.06);
+    box-shadow: var(--shadow-lift);
 
     &__image {
         width: 100%;
         height: 100%;
         min-height: 15rem;
-        object-fit: cover;
+        object-fit: scale-down;
+        padding: clamp(1rem, 3vw, 1.75rem);
         background: var(--stock);
     }
 
@@ -782,7 +789,7 @@ svg.fill { fill: currentColor; stroke: none; }
     background: var(--paper);
     border-radius: 3px;
     overflow: hidden;
-    box-shadow: 0 1px 2px rgba(19, 32, 43, 0.05);
+    box-shadow: var(--shadow-rest);
 
     th, td {
         text-align: left;
@@ -832,7 +839,7 @@ svg.fill { fill: currentColor; stroke: none; }
 .entries {
     background: var(--paper);
     border-radius: 3px;
-    box-shadow: 0 1px 2px rgba(19, 32, 43, 0.05);
+    box-shadow: var(--shadow-rest);
 }
 
 .entry {
@@ -1073,7 +1080,7 @@ svg.fill { fill: currentColor; stroke: none; }
 .postmortem {
     background: var(--paper);
     border-radius: 3px;
-    box-shadow: 0 1px 2px rgba(19, 32, 43, 0.06), 0 6px 20px rgba(19, 32, 43, 0.06);
+    box-shadow: var(--shadow-lift);
     & + & { margin-top: 1.5rem; }
 }
 
@@ -1187,7 +1194,7 @@ svg.fill { fill: currentColor; stroke: none; }
 .repos {
     background: var(--paper);
     border-radius: 3px;
-    box-shadow: 0 1px 2px rgba(19, 32, 43, 0.05);
+    box-shadow: var(--shadow-rest);
 }
 
 .repo {
@@ -1236,4 +1243,67 @@ svg.fill { fill: currentColor; stroke: none; }
         font-style: italic;
         color: var(--ink-muted);
     }
+}
+
+// =====================================================================
+// Motion: continuity and feedback around the one authored moment
+// (the route draw). Everything here is off under reduced motion, and
+// nothing hides content by default.
+// =====================================================================
+
+// CV <-> Portfolio: cross-document view transition, the masthead holds
+@media (prefers-reduced-motion: no-preference) {
+    @view-transition { navigation: auto; }
+}
+
+.masthead { view-transition-name: masthead; }
+
+::view-transition-old(root),
+::view-transition-new(root) { animation-duration: 0.22s; animation-timing-function: var(--ease-out); }
+::view-transition-group(masthead) { animation-duration: 0.3s; animation-timing-function: var(--ease-out); }
+
+// Arrival: jumping to a station from the route strip marks where you landed
+@keyframes arrive {
+    from { box-shadow: 0 0 0 0 color-mix(in srgb, var(--signal) 55%, transparent); }
+    to { box-shadow: 0 0 0 14px transparent; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .station:target .station__name::before { animation: arrive 0.9s var(--ease-out) 0.35s 2; }
+}
+
+.station:target .station__name { color: var(--signal-ink); }
+
+// Portfolio: the troubleshooting line draws down once, steps strike in order
+@media (prefers-reduced-motion: no-preference) {
+    .motion .postmortem__timeline {
+        &::before {
+            transform-origin: top;
+            transition: transform 0.8s var(--ease-out);
+        }
+        li::before { transition: transform 0.35s var(--ease-out), background-color 0.35s var(--ease-out); }
+        @for $i from 1 through 4 {
+            li:nth-child(#{$i})::before { transition-delay: #{($i - 1) * 0.16}s; }
+        }
+
+        &:not(.is-drawn) {
+            &::before { transform: scaleY(0); }
+            li::before { transform: scale(0.4); }
+        }
+    }
+}
+
+// Form status: eases in so the result reads as a response to Send
+@keyframes status-in {
+    from { opacity: 0; transform: translateY(3px); }
+}
+
+.form__status:not(:empty) { animation: status-in 0.25s var(--ease-out); }
+
+@media (prefers-reduced-motion: reduce) {
+    .form__status:not(:empty) { animation-name: fade-in; }
+}
+
+@keyframes fade-in {
+    from { opacity: 0; }
 }
