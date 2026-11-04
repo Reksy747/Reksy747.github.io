@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-04T16:13:47.943Z",
+  "generatedAt": "2026-11-05T00:00:00.000Z",
   "title": "Design System: Reksy747 CV",
   "extensions": {
     "colorMeta": {
@@ -181,7 +181,8 @@
           "oklch(73% 0.143 45.4)",
           "oklch(85% 0.079 45.4)",
           "oklch(95% 0.026 45.4)"
-        ]
+        ],
+        "cssVar": "--signal-hover"
       },
       "on-signal": {
         "role": "primary",
@@ -198,7 +199,8 @@
           "oklch(73% 0.029 61.8)",
           "oklch(85% 0.016 61.8)",
           "oklch(95% 0.005 61.8)"
-        ]
+        ],
+        "cssVar": "--on-signal"
       },
       "mast": {
         "role": "neutral",
@@ -434,6 +436,24 @@
           "oklch(95% 0.022 49.1)"
         ]
       },
+      "night-signal-hover": {
+        "role": "primary",
+        "displayName": "Night Signal Hover",
+        "canonical": "#ff9a5c",
+        "oklch": "oklch(77.6% 0.140 49.6)",
+        "theme": "dark",
+        "cssVar": "--signal-hover",
+        "tonalRamp": [
+          "oklch(15% 0.059 49.6)",
+          "oklch(25% 0.098 49.6)",
+          "oklch(37% 0.140 49.6)",
+          "oklch(49% 0.140 49.6)",
+          "oklch(61% 0.140 49.6)",
+          "oklch(73% 0.105 49.6)",
+          "oklch(85% 0.059 49.6)",
+          "oklch(95% 0.020 49.6)"
+        ]
+      },
       "night-mast": {
         "role": "neutral",
         "displayName": "Night Masthead Navy",
@@ -530,13 +550,17 @@
     "shadows": [
       {
         "name": "panel-lift",
+        "cssVar": "--shadow-lift",
         "value": "0 1px 2px rgba(19, 32, 43, 0.06), 0 6px 20px rgba(19, 32, 43, 0.06)",
-        "purpose": "Tickets, boarding passes, summary stub."
+        "night": "0 0 0 1px rgba(255, 255, 255, 0.08), 0 8px 24px rgba(0, 0, 0, 0.45)",
+        "purpose": "Tickets, boarding passes, summary stub, case studies, troubleshooting panel."
       },
       {
         "name": "panel-rest",
+        "cssVar": "--shadow-rest",
         "value": "0 1px 2px rgba(19, 32, 43, 0.05)",
-        "purpose": "Legs, manifest tables, entry lists."
+        "night": "0 0 0 1px rgba(255, 255, 255, 0.06)",
+        "purpose": "Legs, manifest tables, entry lists, repositories list."
       },
       {
         "name": "live-halo",
@@ -547,6 +571,11 @@
         "name": "live-tick",
         "value": "0 0 0 3px var(--stock), 0 0 0 6px color-mix(in srgb, var(--signal) 30%, transparent)",
         "purpose": "Current leg tick on the experience rail."
+      },
+      {
+        "name": "arrive",
+        "value": "0 0 0 0 color-mix(in srgb, var(--signal) 55%, transparent) to 0 0 0 14px transparent",
+        "purpose": "Arrival pulse on a targeted station marker (motion only)."
       }
     ],
     "motion": [
@@ -574,6 +603,26 @@
         "name": "strike",
         "value": "scale(0.4) to none, 0.5s ease-out, 1.05s delay",
         "purpose": "Jakarta marker strikes in as the line arrives."
+      },
+      {
+        "name": "page-transition",
+        "value": "@view-transition navigation: auto; root 0.22s, masthead group 0.3s, ease-out",
+        "purpose": "CV and Portfolio cross-fade; the masthead holds (view-transition-name: masthead). prefers-reduced-motion: no-preference only."
+      },
+      {
+        "name": "arrive",
+        "value": "box-shadow ring to 14px, 0.9s ease-out, 0.35s delay, 2 iterations",
+        "purpose": "Station marker pulse on :target. The target station name turns signal-ink in every motion setting."
+      },
+      {
+        "name": "timeline-draw",
+        "value": "scaleY(0) to none 0.8s; markers scale(0.4) to none 0.35s, 0.16s stagger",
+        "purpose": "Portfolio troubleshooting line draws on scroll into view; gated by a .motion class set by JS only when IntersectionObserver exists and motion is allowed."
+      },
+      {
+        "name": "status-in",
+        "value": "opacity 0 and translateY(3px) to none, 0.25s ease-out; fade-in under reduce",
+        "purpose": "Form status eases in as the response to Send."
       }
     ],
     "breakpoints": [
@@ -596,9 +645,9 @@
     ],
     "themes": {
       "light": "Tokens on :root (color-scheme: light).",
-      "dark": "night mixin: applied under prefers-color-scheme: dark on :root:not([data-theme=\"light\"]), and on :root[data-theme=\"dark\"]. Same custom property names; values are the night-* color keys. mast-ink takes night-ink; focus, on-signal and signal-hover are not redefined.",
+      "dark": "night mixin: applied under prefers-color-scheme: dark on :root:not([data-theme=\"light\"]), and on :root[data-theme=\"dark\"]. Same custom property names; values are the night-* color keys. mast-ink takes night-ink; signal-hover takes night-signal-hover; --shadow-rest and --shadow-lift become white hairline rings (lift adds a dark drop). focus and on-signal are not redefined.",
       "contrastMore": "--rule and --perf become currentColor; --ink-muted becomes --ink.",
-      "print": "stock, paper, mast to #fff; ink and mast-ink to #000; panels trade shadow for a 1px #bbb border."
+      "print": "stock, paper, mast to #fff; ink and mast-ink to #000; tickets, legs, passes, manifests and entries trade shadow for a 1px rule border; slots lose their tint."
     }
   },
   "components": [
@@ -608,7 +657,7 @@
       "refersTo": "button-primary",
       "description": "The one call to act: download the résumé, send the message.",
       "html": "<button class=\"ds-btn-primary\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 3v12m0 0-5-5m5 5 5-5M5 21h14\"/></svg>Download résumé</button>",
-      "css": ".ds-btn-primary{display:inline-flex;align-items:center;gap:.55rem;min-height:2.875rem;padding:0 1.25rem;border:1px solid transparent;border-radius:2px;background:var(--signal, #f25c05);color:#1a0a00;font:600 1rem/1 \"Source Sans 3\",\"Segoe UI\",system-ui,sans-serif;cursor:pointer;transition:background-color .2s cubic-bezier(0.16,1,0.3,1),transform .12s ease-out}.ds-btn-primary svg{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}.ds-btn-primary:hover{background:#ff7424}.ds-btn-primary:active{transform:translateY(1px)}.ds-btn-primary:focus-visible{outline:2px solid var(--focus, #f25c05);outline-offset:3px;border-radius:2px}"
+      "css": ".ds-btn-primary{display:inline-flex;align-items:center;gap:.55rem;min-height:2.875rem;padding:0 1.25rem;border:1px solid transparent;border-radius:2px;background:var(--signal, #f25c05);color:#1a0a00;font:600 1rem/1 \"Source Sans 3\",\"Segoe UI\",system-ui,sans-serif;cursor:pointer;transition:background-color .2s cubic-bezier(0.16,1,0.3,1),transform .12s ease-out}.ds-btn-primary svg{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}.ds-btn-primary:hover{background:var(--signal-hover, #ff7424)}.ds-btn-primary:active{transform:translateY(1px)}.ds-btn-primary:focus-visible{outline:2px solid var(--focus, #f25c05);outline-offset:3px;border-radius:2px}"
     },
     {
       "name": "Ghost Button",
@@ -647,7 +696,7 @@
       "refersTo": "leg",
       "description": "A dated itinerary entry; only the current leg carries the IN SERVICE stamp.",
       "html": "<article class=\"ds-leg\"><p class=\"ds-leg__when\">Mar 2023 – Present</p><h4 class=\"ds-leg__title\">DevOps Engineer</h4><p class=\"ds-leg__org\">MEMBER.ID · Full-time</p><span class=\"ds-stamp\"><b>In service</b> since Mar 2023</span><p>Maintains cloud infrastructure and the pipelines that ship to it.</p></article>",
-      "css": ".ds-leg{position:relative;padding:clamp(1.25rem,3vw,1.75rem);background:var(--paper, #ffffff);border-radius:3px;box-shadow:0 1px 2px rgba(19,32,43,.05);color:var(--ink, #13202b);font:400 1.0625rem/1.6 \"Source Sans 3\",\"Segoe UI\",system-ui,sans-serif}.ds-leg p,.ds-leg h4{margin:0}.ds-leg__when{font:500 .8125rem/1.3 \"JetBrains Mono\",ui-monospace,\"Cascadia Mono\",Consolas,monospace;letter-spacing:.03em;color:var(--ink-muted, #44546a)}.ds-leg .ds-leg__title{margin-top:.4rem;padding-right:9.5rem;font:700 clamp(1.375rem,2.6vw,1.75rem)/1.05 \"Barlow Condensed\",\"Arial Narrow\",sans-serif;text-transform:uppercase;letter-spacing:.01em}.ds-leg .ds-leg__org{margin:.25rem 0 .85rem;font-weight:600;color:var(--route, #1f4fa8)}.ds-stamp{position:absolute;right:clamp(1rem,3vw,1.75rem);top:clamp(1rem,3vw,1.5rem);display:grid;justify-items:center;gap:.15rem;padding:.45rem .75rem;border:2px solid var(--signal-ink, #b93f00);outline:1px solid var(--signal-ink, #b93f00);outline-offset:2px;border-radius:3px;color:var(--signal-ink, #b93f00);font:500 .6875rem/1.3 \"JetBrains Mono\",ui-monospace,\"Cascadia Mono\",Consolas,monospace;letter-spacing:.1em;text-transform:uppercase;transform:rotate(-5deg)}.ds-stamp b{font:700 1.125rem/1 \"Barlow Condensed\",\"Arial Narrow\",sans-serif;letter-spacing:.06em}"
+      "css": ".ds-leg{position:relative;padding:clamp(1.25rem,3vw,1.75rem);background:var(--paper, #ffffff);border-radius:3px;box-shadow:var(--shadow-rest, 0 1px 2px rgba(19,32,43,.05));color:var(--ink, #13202b);font:400 1.0625rem/1.6 \"Source Sans 3\",\"Segoe UI\",system-ui,sans-serif}.ds-leg p,.ds-leg h4{margin:0}.ds-leg__when{font:500 .8125rem/1.3 \"JetBrains Mono\",ui-monospace,\"Cascadia Mono\",Consolas,monospace;letter-spacing:.03em;color:var(--ink-muted, #44546a)}.ds-leg .ds-leg__title{margin-top:.4rem;padding-right:9.5rem;font:700 clamp(1.375rem,2.6vw,1.75rem)/1.05 \"Barlow Condensed\",\"Arial Narrow\",sans-serif;text-transform:uppercase;letter-spacing:.01em}.ds-leg .ds-leg__org{margin:.25rem 0 .85rem;font-weight:600;color:var(--route, #1f4fa8)}.ds-stamp{position:absolute;right:clamp(1rem,3vw,1.75rem);top:clamp(1rem,3vw,1.5rem);display:grid;justify-items:center;gap:.15rem;padding:.45rem .75rem;border:2px solid var(--signal-ink, #b93f00);outline:1px solid var(--signal-ink, #b93f00);outline-offset:2px;border-radius:3px;color:var(--signal-ink, #b93f00);font:500 .6875rem/1.3 \"JetBrains Mono\",ui-monospace,\"Cascadia Mono\",Consolas,monospace;letter-spacing:.1em;text-transform:uppercase;transform:rotate(-5deg)}.ds-stamp b{font:700 1.125rem/1 \"Barlow Condensed\",\"Arial Narrow\",sans-serif;letter-spacing:.06em}"
     },
     {
       "name": "Ticket with Stub",
@@ -655,7 +704,7 @@
       "refersTo": "ticket",
       "description": "Main part plus a perforated stub with punched notches; the stub carries labelled facts.",
       "html": "<div class=\"ds-ticket\"><div class=\"ds-ticket__main\"><p class=\"ds-lede\">I keep production steady.</p><p>Cloud infrastructure, on-premises Linux and the CI/CD pipelines that ship to them.</p></div><dl class=\"ds-ticket__stub\"><div><dt>Base</dt><dd>South Jakarta</dd></div><div><dt>Platform</dt><dd>Kubernetes · Linux · CI/CD</dd></div></dl></div>",
-      "css": ".ds-ticket{display:grid;grid-template-columns:minmax(0,1fr) 16.5rem;background:var(--paper, #ffffff);border-radius:3px;box-shadow:0 1px 2px rgba(19,32,43,.06),0 6px 20px rgba(19,32,43,.06);color:var(--ink, #13202b);font:400 1.0625rem/1.6 \"Source Sans 3\",\"Segoe UI\",system-ui,sans-serif}.ds-ticket p,.ds-ticket dl,.ds-ticket dd{margin:0}.ds-ticket__main{padding:clamp(1.5rem,3.5vw,2.25rem)}.ds-ticket__main>p+p{margin-top:1rem}.ds-lede{font-size:clamp(1.1875rem,2vw,1.375rem);line-height:1.5;font-weight:600;max-width:38em}.ds-ticket__stub{position:relative;padding:clamp(1.5rem,3.5vw,2.25rem);border-left:2px dashed var(--perf, #9aa7b5)}.ds-ticket__stub::before,.ds-ticket__stub::after{content:\"\";position:absolute;left:-.75rem;width:1.375rem;height:1.375rem;border-radius:50%;background:var(--stock, #eef1f4)}.ds-ticket__stub::before{top:-.7rem}.ds-ticket__stub::after{bottom:-.7rem}.ds-ticket__stub div+div{margin-top:1rem}.ds-ticket__stub dt{font:600 .75rem/1.3 \"Source Sans 3\",\"Segoe UI\",system-ui,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-muted, #44546a)}.ds-ticket__stub dd{margin-top:.2rem;font-weight:600;line-height:1.35}"
+      "css": ".ds-ticket{display:grid;grid-template-columns:minmax(0,1fr) 16.5rem;background:var(--paper, #ffffff);border-radius:3px;box-shadow:var(--shadow-lift, 0 1px 2px rgba(19,32,43,.06),0 6px 20px rgba(19,32,43,.06));color:var(--ink, #13202b);font:400 1.0625rem/1.6 \"Source Sans 3\",\"Segoe UI\",system-ui,sans-serif}.ds-ticket p,.ds-ticket dl,.ds-ticket dd{margin:0}.ds-ticket__main{padding:clamp(1.5rem,3.5vw,2.25rem)}.ds-ticket__main>p+p{margin-top:1rem}.ds-lede{font-size:clamp(1.1875rem,2vw,1.375rem);line-height:1.5;font-weight:600;max-width:38em}.ds-ticket__stub{position:relative;padding:clamp(1.5rem,3.5vw,2.25rem);border-left:2px dashed var(--perf, #9aa7b5)}.ds-ticket__stub::before,.ds-ticket__stub::after{content:\"\";position:absolute;left:-.75rem;width:1.375rem;height:1.375rem;border-radius:50%;background:var(--stock, #eef1f4)}.ds-ticket__stub::before{top:-.7rem}.ds-ticket__stub::after{bottom:-.7rem}.ds-ticket__stub div+div{margin-top:1rem}.ds-ticket__stub dt{font:600 .75rem/1.3 \"Source Sans 3\",\"Segoe UI\",system-ui,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-muted, #44546a)}.ds-ticket__stub dd{margin-top:.2rem;font-weight:600;line-height:1.35}"
     },
     {
       "name": "Inline Link",
@@ -663,6 +712,14 @@
       "description": "Route-blue link with a soft underline and a nudging arrow.",
       "html": "<a class=\"ds-link\" href=\"#\">View on GitHub<svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M7 17 17 7M9 7h8v8\"/></svg></a>",
       "css": ".ds-link{display:inline-flex;align-items:center;gap:.35rem;color:var(--route, #1f4fa8);font:600 1.0625rem/1.6 \"Source Sans 3\",\"Segoe UI\",system-ui,sans-serif;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.22em;text-decoration-color:color-mix(in srgb, var(--route, #1f4fa8) 40%, transparent)}.ds-link:hover{text-decoration-color:currentColor}.ds-link svg{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:transform .25s cubic-bezier(0.16,1,0.3,1)}.ds-link:hover svg{transform:translate(2px,-2px)}.ds-link:focus-visible{outline:2px solid var(--focus, #f25c05);outline-offset:3px;border-radius:2px}"
+    },
+    {
+      "name": "Repository Row",
+      "kind": "custom",
+      "refersTo": "repo-tag",
+      "description": "Portfolio repositories list: mono repo name, Public/Private tag (private dashed), mono stack line, optional collaborator note.",
+      "html": "<ol class=\"ds-repos\"><li class=\"ds-repo\"><div class=\"ds-repo__head\"><h3 class=\"ds-repo__name\"><a href=\"#\">Golang-On-Cluster-GKE</a></h3><span class=\"ds-repo__vis\">Public</span></div><p>A Go web service shipped by a GitHub Actions pipeline to a GKE cluster.</p><p class=\"ds-repo__stack\">Go · Docker · GitHub Actions · GKE</p></li><li class=\"ds-repo\"><div class=\"ds-repo__head\"><h3 class=\"ds-repo__name\">CICD-Deploy-Java-Spring</h3><span class=\"ds-repo__vis ds-repo__vis--private\">Private</span></div><p>A Spring Boot web app with MockMvc tests, deployed to GKE.</p><p class=\"ds-repo__stack\">Java 11 · Spring Boot · Gradle · GKE</p><p class=\"ds-repo__note\">Built with a collaborator.</p></li></ol>",
+      "css": ".ds-repos{list-style:none;margin:0;padding:0;background:var(--paper, #ffffff);border-radius:3px;box-shadow:var(--shadow-rest, 0 1px 2px rgba(19,32,43,.05));color:var(--ink, #13202b);font:400 1.0625rem/1.6 \"Source Sans 3\",\"Segoe UI\",system-ui,sans-serif}.ds-repo{padding:1.25rem clamp(1rem,2.5vw,1.5rem)}.ds-repo+.ds-repo{border-top:1px dashed var(--perf, #9aa7b5)}.ds-repo p,.ds-repo h3{margin:0}.ds-repo>p{max-width:42em}.ds-repo__head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:.25rem 1rem;margin-bottom:.4rem}.ds-repo__name{font:600 1rem/1.3 \"JetBrains Mono\",ui-monospace,\"Cascadia Mono\",Consolas,monospace;overflow-wrap:anywhere}.ds-repo__name a{color:var(--route, #1f4fa8);text-decoration:underline;text-decoration-color:color-mix(in srgb, var(--route, #1f4fa8) 40%, transparent)}.ds-repo__name a:hover{text-decoration-color:currentColor}.ds-repo__name a:focus-visible{outline:2px solid var(--focus, #f25c05);outline-offset:3px;border-radius:2px}.ds-repo__vis{padding:.15rem .5rem;border:1px solid var(--rule, #c3ccd6);border-radius:2px;color:var(--ink-muted, #44546a);font:600 .75rem/1.3 \"Source Sans 3\",\"Segoe UI\",system-ui,sans-serif;letter-spacing:.1em;text-transform:uppercase}.ds-repo__vis--private{border-style:dashed}.ds-repo__stack{margin-top:.5rem !important;font:500 .8125rem/1.5 \"JetBrains Mono\",ui-monospace,\"Cascadia Mono\",Consolas,monospace;color:var(--ink-muted, #44546a)}.ds-repo__note{margin-top:.35rem !important;font-size:.875rem;font-style:italic;color:var(--ink-muted, #44546a)}"
     }
   ],
   "narrative": {
@@ -674,7 +731,7 @@
       "Dashed perforation rules separate ticket parts; punched notches where perforations meet edges.",
       "One continuous 4px route line with round station markers.",
       "Near-square corners (2px controls, 3px panels).",
-      "Light and dark (\"night\") themes from the same token names; one load-time motion moment."
+      "Light and dark (\"night\") themes from the same token names; one authored motion moment (the route draw), with quiet continuity and feedback around it."
     ],
     "rules": [
       {
@@ -704,7 +761,7 @@
       },
       {
         "name": "The Printed Panel Rule",
-        "body": "Panels rest on stock; they never float. Shadows are ambient and ink-tinted, never hard offset, never coloured. Separation inside a panel is a perforation.",
+        "body": "Panels rest on stock; they never float. Shadows are ambient and ink-tinted (a hairline ring at night), never hard offset, never coloured. Panels take `--shadow-rest` or `--shadow-lift`, never a literal shadow. Separation inside a panel is a perforation.",
         "section": "elevation"
       }
     ],
@@ -714,7 +771,7 @@
       "Do separate parts of a panel with 2px dashed perforation in `perf`, with stock-filled notches where it meets an edge.",
       "Do set names, cities and titles in Barlow Condensed caps; dates, refs and codes in JetBrains Mono; everything else, labels included, in Source Sans 3.",
       "Do keep every new colour decision paired: define the token on `:root` and its counterpart in the `night` mixin.",
-      "Do keep motion to the single route-draw moment and respect reduced motion."
+      "Do keep the route draw as the one authored motion moment; anything else is brief continuity or feedback, runs only under `prefers-reduced-motion: no-preference`, and never hides content by default."
     ],
     "donts": [
       "Don't use cards with coloured side borders, gradients or glass.",
