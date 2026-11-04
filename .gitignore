@@ -1,1 +1,6 @@
 node_modules/
+
+# Local tooling and design-review artifacts (not part of the site)
+.claude/
+.impeccable/mocks/
+.impeccable/review/
