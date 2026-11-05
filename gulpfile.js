@@ -41,9 +41,17 @@ gulp.task('fonts', function () {
         .pipe(gulp.dest('./fonts'));
 });
 
-gulp.task('build', gulp.parallel('scripts', 'styles', 'fonts'));
+gulp.task('terminal-styles', function () {
+    return gulp.src('./scss/terminal.scss')
+        .pipe(sass({ style: 'compressed' }).on('error', sass.logError))
+        .pipe(postcss([autoprefixer()]))
+        .pipe(gulp.dest('./css'));
+});
+
+gulp.task('build', gulp.parallel('scripts', 'styles', 'terminal-styles', 'fonts'));
 
 gulp.task('watch', function () {
     gulp.watch('./js/scripts.js', gulp.series('scripts'));
     gulp.watch('./scss/styles.scss', gulp.series('styles'));
+    gulp.watch('./scss/terminal.scss', gulp.series('terminal-styles'));
 });

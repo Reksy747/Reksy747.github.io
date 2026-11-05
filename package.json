@@ -5,7 +5,8 @@
   "main": "js/scripts.js",
   "scripts": {
     "build": "gulp build",
-    "watch": "gulp watch"
+    "watch": "gulp watch",
+    "test": "node --test \"tests/*.test.mjs\""
   },
   "keywords": [
     "portfolio",

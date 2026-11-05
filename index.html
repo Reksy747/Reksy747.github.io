@@ -1,19 +1,19 @@
 <!DOCTYPE html>
-<html class="no-js" lang="en">
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <title>Petrus Chanel Reksy Arfila — DevOps &amp; Site Reliability Engineer</title>
-    <meta name="description" content="CV of Petrus Chanel Reksy Arfila, DevOps and Site Reliability Engineer working with GCP, Alibaba Cloud, AWS, Kubernetes and CI/CD.">
-    <meta name="color-scheme" content="light dark">
-    <meta name="theme-color" content="#13202b">
+    <title>Petrus Chanel Reksy Arfila | DevOps Engineer</title>
+    <meta name="description" content="CV of Petrus Chanel Reksy Arfila, DevOps and Site Reliability Engineer working with GCP, Alibaba Cloud, AWS, on-premises servers and CI/CD.">
+    <meta name="color-scheme" content="dark light">
+    <meta name="theme-color" content="#1d2a35">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <link rel="canonical" href="https://reksy747.github.io/">
     <meta property="og:type" content="profile">
     <meta property="og:url" content="https://reksy747.github.io/">
-    <meta property="og:title" content="Petrus Chanel Reksy Arfila — DevOps Engineer at MEMBER.ID">
-    <meta property="og:description" content="CV of a DevOps and Site Reliability Engineer working with GCP, Alibaba Cloud, AWS, Kubernetes and CI/CD.">
+    <meta property="og:title" content="Petrus Chanel Reksy Arfila | DevOps Engineer at MEMBER.ID">
+    <meta property="og:description" content="CV of a DevOps and Site Reliability Engineer working with GCP, Alibaba Cloud, AWS, on-premises servers and CI/CD.">
     <meta property="og:image" content="https://reksy747.github.io/images/og-card.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
@@ -48,70 +48,56 @@
         }
     }
     </script>
+    <script>
+        // Apply the saved theme before first paint (same rules as loadTheme in js/terminal/core.js)
+        (function () {
+            // Old links to CV sections (e.g. /#contact from LinkedIn) now live on cv.html
+            if (/^#(experience|projects|skills|education|organizations|certifications|contact)$/.test(location.hash)) {
+                location.replace('cv.html' + location.hash);
+                return;
+            }
+            var themes = ['dark', 'light', 'dracula', 'nord', 'ubuntu', 'matrix'], t = null;
+            try { t = localStorage.getItem('terminal-theme'); } catch (e) {}
+            if (themes.indexOf(t) < 0) t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', t);
+        })();
+    </script>
     <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link rel="preload" href="fonts/barlow-condensed-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="fonts/source-sans-3-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="css/styles.css">
-    <script>document.documentElement.classList.replace('no-js', 'js');</script>
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="preload" href="fonts/jetbrains-mono-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="css/terminal.css">
 </head>
 
 <body>
-    <a class="skip-link" href="#main">Skip to content</a>
+    <main class="term" id="main">
+        <h1 class="sr-only">Petrus Chanel Reksy Arfila</h1>
+        <p class="sr-only">DevOps Engineer at MEMBER.ID, working with GCP · Alibaba Cloud · AWS · On-premises.</p>
 
-    <!-- Masthead: the itinerary header -->
-    <header class="masthead" id="top">
-        <div class="wrap">
-            <div class="running-head">
-                <span>Ref. REKSY747</span>
-                <nav class="page-switch" aria-label="Pages">
-                    <a href="index.html" aria-current="page">CV</a>
-                    <a href="portfolio.html">Portfolio</a>
-                </nav>
-            </div>
-            <div class="masthead__main">
-                <img class="masthead__photo" src="images/profile-192.webp" alt="Portrait of Petrus Chanel Reksy Arfila" width="96" height="96" fetchpriority="high">
-                <div class="masthead__id">
-                    <h1 class="masthead__name">Petrus Chanel Reksy Arfila</h1>
-                    <p class="masthead__role">DevOps Engineer · MEMBER.ID</p>
-                    <p class="masthead__stack">GCP · Alibaba Cloud · AWS · Kubernetes</p>
-                </div>
-                <div class="masthead__actions">
-                    <a class="btn btn--primary" href="https://drive.google.com/file/d/1SHfUOhkKift7SdeT7EdSMaQGtsuMURkG/view?usp=sharing" target="_blank" rel="noopener noreferrer">
-                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m0 0-5-5m5 5 5-5M5 21h14"/></svg>
-                        Download résumé
-                    </a>
-                    <a class="btn btn--ghost" href="#contact">Contact</a>
-                </div>
-            </div>
-        </div>
-    </header>
+        <section class="term__intro" aria-label="Welcome">
+            <p class="term__line"><span class="term__prompt" aria-hidden="true"><span class="term__user">visitor</span>@<span class="term__host">reksy747.github.io</span>:~$</span> welcome</p>
+<pre class="term__banner" aria-hidden="true">
+ ________  _______   ___  __    ________       ___    ___
+|\   __  \|\  ___ \ |\  \|\  \ |\   ____\     |\  \  /  /|
+\ \  \|\  \ \   __/|\ \  \/  /|\ \  \___|_    \ \  \/  / /
+ \ \   _  _\ \  \_|/_\ \   ___  \ \_____  \    \ \    / /
+  \ \  \\  \\ \  \_|\ \ \  \\ \  \|____|\  \    \/  /  /
+   \ \__\\ _\\ \_______\ \__\\ \__\____\_\  \ __/  / /
+    \|__|\|__|\|_______|\|__| \|__|\_________\\___/ /
+                                  \|_________\|___|/
+</pre>
+            <p class="term__line term__lede"><span>Welcome to my terminal CV</span>
+<span>I'm a <span class="term__keep">DevOps Engineer</span> <span class="term__group">at MEMBER.ID</span></span></p>
+            <p class="term__line term__rule" aria-hidden="true">----</p>
+            <p class="term__line">This site's source code is on <a href="https://github.com/Reksy747/Reksy747.github.io" target="_blank" rel="noopener noreferrer">GitHub</a>.</p>
+            <p class="term__line term__rule" aria-hidden="true">----</p>
+            <p class="term__line">For a list of available commands, type <code class="term__code">`help`</code>.</p>
+        </section>
 
-    <!-- Route strip: where the career has travelled -->
-    <nav class="route" aria-label="Career route">
-        <div class="wrap">
-            <ol class="route__line">
-                <li class="route__stop">
-                    <a href="#station-klaten">
-                        <span class="route__city">Klaten</span>
-                        <span class="route__meta"><time class="route__year">2014</time> School, IT support</span>
-                    </a>
-                </li>
-                <li class="route__stop">
-                    <a href="#station-yogyakarta">
-                        <span class="route__city">Yogyakarta</span>
-                        <span class="route__meta"><time class="route__year">2016</time> University, first engineering roles</span>
-                    </a>
-                </li>
-                <li class="route__stop route__stop--now">
-                    <a href="#station-jakarta" aria-current="location">
-                        <span class="route__city">Jakarta</span>
-                        <span class="route__meta"><time class="route__year">2021</time> SRE, DevOps</span>
-                    </a>
-                </li>
-            </ol>
-        </div>
-    </nav>
+        <noscript>
+            <p class="term__line">This terminal needs JavaScript. Read the <a href="cv.html">full CV</a> or the <a href="portfolio.html">portfolio</a>.</p>
+        </noscript>
 
+<<<<<<< Updated upstream
     <div class="wrap layout">
         <!-- Section index -->
         <nav class="index" aria-label="Sections">
@@ -131,18 +117,18 @@
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
+=======
+        <div class="term__out" role="log" aria-live="polite"></div>
+>>>>>>> Stashed changes
 
-        <!-- Summary: who, now, where, at a glance -->
-        <aside class="summary" aria-label="Summary">
-            <p class="summary__lede">I run cloud infrastructure on Google Cloud and Alibaba Cloud, on-premises Linux servers, and the CI/CD pipelines that deploy to them.</p>
-            <dl class="summary__facts">
-                <div><dt>Now</dt><dd>DevOps Engineer, MEMBER.ID</dd></div>
-                <div><dt>Base</dt><dd>South Jakarta · Hybrid</dd></div>
-                <div><dt>Platform</dt><dd>Kubernetes · Linux · CI/CD</dd></div>
-                <div><dt>Started</dt><dd>IT support &amp; networking, 2016</dd></div>
-            </dl>
-        </aside>
+        <form class="term__form" autocomplete="off">
+            <span class="term__prompt" aria-hidden="true"><span class="term__user">visitor</span>@<span class="term__host">reksy747.github.io</span>:~$</span>
+            <label class="sr-only" for="cmd">command</label>
+            <input class="term__input" id="cmd" name="cmd" type="text" autocapitalize="off" autocomplete="off" autocorrect="off" spellcheck="false" enterkeyhint="go">
+        </form>
+    </main>
 
+<<<<<<< Updated upstream
         <main id="main" class="column">
             <!-- Experience -->
             <section class="section" id="experience" aria-labelledby="experience-title">
@@ -398,6 +384,9 @@
     </footer>
 
     <script src="js/scripts.min.js" defer></script>
+=======
+    <script type="module" src="js/terminal/ui.js"></script>
+>>>>>>> Stashed changes
 </body>
 
 </html>

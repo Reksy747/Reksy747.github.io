@@ -25,7 +25,8 @@
         "rule": "cramped-padding",
         "value": "*",
         "files": [
-          "index.html"
+          "index.html",
+          "cv.html"
         ],
         "createdAt": "2026-11-04T16:06:18.003Z",
         "reason": "Claude verified computed padding in browser 2026-11-04: .ticket__main/.ticket__stub 36px, .pass__stub 32px, .leg 28px, .entry 20px 24px; findings carry no value so selector scoping is not possible"
@@ -74,6 +75,24 @@
         ],
         "createdAt": "2026-11-04T16:35:54.143Z",
         "reason": "Claude verified computed padding in browser 2026-11-04: .case__body 32px, .ticket__main/.ticket__stub 36px; findings carry no value so selector scoping is not possible"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-11-05T19:20:21.818Z",
+        "reason": "Claude: terminal home (index.html) uses its own theme palette and JetBrains Mono, documented in DESIGN.md \"Terminal home\"; the Itinerary tokens apply to cv.html and portfolio.html"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-11-05T19:20:21.818Z",
+        "reason": "Claude: terminal home (index.html) uses its own theme palette and JetBrains Mono, documented in DESIGN.md \"Terminal home\"; the Itinerary tokens apply to cv.html and portfolio.html"
       }
     ]
   }
