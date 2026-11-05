@@ -93,6 +93,15 @@
         ],
         "createdAt": "2026-11-05T19:20:21.818Z",
         "reason": "Claude: terminal home (index.html) uses its own theme palette and JetBrains Mono, documented in DESIGN.md \"Terminal home\"; the Itinerary tokens apply to cv.html and portfolio.html"
+      },
+      {
+        "rule": "flat-type-hierarchy",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-11-05T20:15:57.966Z",
+        "reason": "Claude: terminal home uses one monospace size on purpose (terminal convention, owner asked to match a terminal reference); hierarchy comes from colour (prompt, headings, commands). The Itinerary type scale applies to cv.html and portfolio.html."
       }
     ]
   }

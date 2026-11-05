@@ -1,7 +1,7 @@
 // Offline support for reksy747.github.io.
 // bump VERSION when you deploy changes to cached files (old caches are deleted on activate).
 // Pages, JS and CSS are network-first, so online visitors always get the latest CV even if you forget.
-const VERSION = 'v1';
+const VERSION = 'v2';
 
 const PRECACHE = [
     '/',

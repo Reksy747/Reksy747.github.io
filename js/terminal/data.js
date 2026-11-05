@@ -33,7 +33,6 @@ const repos = [
     { name: 'testgan', url: 'https://github.com/Reksy747/testgan', visibility: 'Public', line: 'A containerised Java service built with Gradle.' },
     { name: 'reksytestrail', url: null, visibility: 'Private', line: 'A full-stack Nuxt application with its own server API and data models, GitHub Actions workflows, and enforced commit conventions with Husky and commitlint.' },
     { name: 'dutani', url: 'https://github.com/Reksy747/dutani', visibility: 'Public', line: 'E-learning Dutatani: an application where farmers share agricultural knowledge.' },
-    { name: 'BloodCare', url: 'https://github.com/Reksy747/BloodCare', visibility: 'Public', line: 'A desktop system for recording blood pressure and blood sugar levels.' },
     { name: 'Adblock-list', url: 'https://github.com/Reksy747/Adblock-list', visibility: 'Public', line: 'A domain blocklist for Pi-hole and ad blockers.' }
 ];
 
