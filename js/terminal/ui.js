@@ -53,10 +53,15 @@ function renderBlock(block) {
     }
 }
 
+// Like a real terminal: after every command the prompt is the last line on screen,
+// so the visitor can keep typing without scrolling (earlier output stays above, scroll up to read it)
+function showPrompt() {
+    window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'instant' });
+}
+
 function print(nodes) {
     out.append(...nodes);
-    const last = out.lastElementChild;
-    if (last) last.scrollIntoView({ block: 'nearest' });
+    showPrompt();
 }
 
 function echo(value) {
@@ -73,6 +78,7 @@ function execute(value) {
         print([intro.cloneNode(true)]);
     } else if (result.clear) {
         out.replaceChildren();
+        showPrompt();
     } else {
         print([echo(value), ...result.output.map(renderBlock)]);
     }
@@ -114,8 +120,16 @@ input.addEventListener('keydown', (event) => {
         // Only inside the terminal input, so the browser's own Ctrl+L works everywhere else
         event.preventDefault();
         out.replaceChildren();
+        showPrompt();
     }
 });
+
+// Phones: when the on-screen keyboard opens it shrinks the visible area; keep the prompt above it
+if (window.visualViewport) {
+    window.visualViewport.addEventListener('resize', () => {
+        if (document.activeElement === input) showPrompt();
+    });
+}
 
 term.addEventListener('click', (event) => {
     const button = event.target.closest('button[data-command]');
