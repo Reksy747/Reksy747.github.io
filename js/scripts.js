@@ -57,41 +57,20 @@
         });
     }
 
-    // Phone menu: the burger opens and closes the section list
-    const index = document.querySelector('.index');
-    const toggle = index && index.querySelector('.index__toggle');
-    const current = index && index.querySelector('.index__current');
-    const links = index ? [...index.querySelectorAll('a')] : [];
-
-    const setOpen = (open) => {
-        index.classList.toggle('is-open', open);
-        toggle.setAttribute('aria-expanded', String(open));
-    };
-
-    if (toggle) {
-        toggle.addEventListener('click', () => setOpen(!index.classList.contains('is-open')));
-        links.forEach((link) => link.addEventListener('click', () => setOpen(false)));
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && index.classList.contains('is-open')) {
-                setOpen(false);
-                toggle.focus();
-            }
-        });
-        document.addEventListener('click', (e) => {
-            if (!index.contains(e.target)) setOpen(false);
-        });
-    }
-
-    // Section index: mark where the reader is, and name it in the phone bar
+    // Section index: mark where the reader is
+    const links = [...document.querySelectorAll('.index a')];
     if (!links.length || !('IntersectionObserver' in window)) return;
 
     const setActive = (id) => {
-        links.forEach((link) => {
-            const on = link.getAttribute('href') === '#' + id;
+        // Phone tab bar hides Organizations/Certifications: light the nearest visible tab before them (Education)
+        let i = links.findIndex((link) => link.getAttribute('href') === '#' + id);
+        while (i > 0 && links[i].offsetParent === null) i--;
+        if (i < 0) return;
+        links.forEach((link, j) => {
+            const on = j === i;
             link.classList.toggle('is-active', on);
             if (on) {
                 link.setAttribute('aria-current', 'true');
-                if (current) current.textContent = link.textContent;
             } else {
                 link.removeAttribute('aria-current');
             }

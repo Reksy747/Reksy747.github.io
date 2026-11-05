@@ -40,6 +40,7 @@
             { "@type": "SoftwareSourceCode", "name": "Golang-On-Cluster-GKE", "codeRepository": "https://github.com/Reksy747/Golang-On-Cluster-GKE", "programmingLanguage": "Go" },
             { "@type": "SoftwareSourceCode", "name": "testgan", "codeRepository": "https://github.com/Reksy747/testgan", "programmingLanguage": "Java" },
             { "@type": "SoftwareSourceCode", "name": "dutani", "codeRepository": "https://github.com/Reksy747/dutani", "programmingLanguage": "PHP" },
+            { "@type": "SoftwareSourceCode", "name": "BloodCare", "codeRepository": "https://github.com/Reksy747/BloodCare", "programmingLanguage": "Java" },
             { "@type": "SoftwareSourceCode", "name": "Adblock-list", "codeRepository": "https://github.com/Reksy747/Adblock-list" }
         ]
     }
@@ -81,18 +82,12 @@
 
     <div class="wrap layout layout--two">
         <nav class="index" aria-label="Sections">
-            <button class="index__toggle" type="button" aria-expanded="false" aria-controls="index-list">
-                <span class="index__current">Sections</span>
-                <svg class="index__icon index__icon--open" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
-                <svg class="index__icon index__icon--close" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
-                <span class="visually-hidden">Menu</span>
-            </button>
-            <ul id="index-list">
-                <li><a href="#scope">Operating scope</a></li>
-                <li><a href="#cases">Case studies</a></li>
-                <li><a href="#repositories">Repositories</a></li>
-                <li><a href="#troubleshooting">Troubleshooting</a></li>
-                <li><a href="#contact">Contact</a></li>
+            <ul>
+                <li><a href="#scope"><svg class="index__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span class="index__full">Operating scope</span><span class="index__short">Scope</span></a></li>
+                <li><a href="#cases"><svg class="index__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M3 6a1 1 0 0 1 1-1h5l2 2h9a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/></svg><span class="index__full">Case studies</span><span class="index__short">Cases</span></a></li>
+                <li><a href="#repositories"><svg class="index__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="6" cy="5" r="2"/><circle cx="6" cy="19" r="2"/><circle cx="18" cy="8" r="2"/><path d="M6 7v10M18 10a6 6 0 0 1-6 6H8"/></svg><span class="index__full">Repositories</span><span class="index__short">Repos</span></a></li>
+                <li><a href="#troubleshooting"><svg class="index__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 3 2 20h20L12 3zM12 10v4M12 17v.01"/></svg><span class="index__full">Troubleshooting</span><span class="index__short">Incidents</span></a></li>
+                <li><a href="#contact"><svg class="index__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>Contact</a></li>
             </ul>
         </nav>
 
@@ -295,8 +290,17 @@
                             <h3 class="repo__name"><a href="https://github.com/Reksy747/dutani" target="_blank" rel="noopener noreferrer">dutani</a></h3>
                             <span class="repo__vis">Public</span>
                         </div>
-                        <p>The Dutatani e-learning web application for sharing agricultural knowledge, with admin and teacher roles.</p>
-                        <p class="repo__stack">Laravel · PHP · MySQL</p>
+                        <p>E-learning Dutatani: an application where farmers share agricultural knowledge. Admins and teachers approve users, post material and answer questions about agriculture.</p>
+                        <p class="repo__stack">Laravel · PHP · MySQL · Web &amp; mobile API</p>
+                    </li>
+                    <li class="repo">
+                        <div class="repo__head">
+                            <h3 class="repo__name"><a href="https://github.com/Reksy747/BloodCare" target="_blank" rel="noopener noreferrer">BloodCare</a></h3>
+                            <span class="repo__vis">Public</span>
+                        </div>
+                        <p>A desktop system for recording blood pressure and blood sugar levels.</p>
+                        <p class="repo__stack">Java · JavaFX · Desktop</p>
+                        <p class="repo__note">Built with two collaborators.</p>
                     </li>
                     <li class="repo">
                         <div class="repo__head">

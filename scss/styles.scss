@@ -463,85 +463,56 @@ svg.fill { fill: currentColor; stroke: none; }
         &.is-active::before { background: var(--signal); border-color: var(--signal); }
     }
 
-    &__toggle { display: none; }
+    &__short { display: none; }
 
-    // Phones: a slim sticky bar naming the current section, with a burger that opens the list
+    // Icons appear only in the phone tab bar; the desktop index stays a text list
+    &__icon {
+        display: none;
+        width: 1.25rem;
+        height: 1.25rem;
+        flex: none;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 1.75;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+    }
+
+    // Phones: a fixed bottom tab bar, every main section one tap away within thumb reach
     @media (max-width: 860px) {
-        top: 0;
-        z-index: 20;
-        margin: 0 calc(var(--gutter) * -1);
-        padding: 0 var(--gutter);
-        background: var(--stock);
-        border-bottom: 1px solid var(--rule);
+        position: fixed;
+        top: auto;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 30;
+        padding: 0 0.25rem env(safe-area-inset-bottom);
+        background: var(--paper);
+        border-top: 1px solid var(--rule);
+        box-shadow: 0 -4px 16px rgba(19, 32, 43, 0.08);
 
-        ul { border-top: 0; }
-        li:last-child { border-bottom: 0; }
-        a { padding: 0.85rem 0; }
+        ul { display: flex; border: 0; }
+        li { flex: 1 1 0; min-width: 0; border: 0; }
+        .index__extra { display: none; }
 
-        .js & {
-            ul {
-                position: absolute;
-                left: 0;
-                right: 0;
-                top: 100%;
-                padding: 0 var(--gutter) 0.5rem;
-                background: var(--stock);
-                border-bottom: 2px solid var(--ink);
-                box-shadow: var(--shadow-lift);
-            }
-            &:not(.is-open) ul { display: none; }
+        a {
+            flex-direction: column;
+            justify-content: center;
+            gap: 0.25rem;
+            min-height: 3.5rem;
+            padding: 0.4rem 0.15rem;
+            font-size: 0.75rem;
+            line-height: 1.1;
+            text-align: center;
+
+            &::before { display: none; }
         }
+        a.is-active { color: var(--signal-ink); }
+        .index__icon { display: block; }
 
-        .js &__toggle {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 1rem;
-            width: 100%;
-            min-height: 3rem;
-            padding: 0;
-            border: 0;
-            background: none;
-            color: var(--ink);
-            font: 600 0.9375rem/1 var(--text);
-            cursor: pointer;
-        }
-
-        &__current {
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-            &::before {
-                content: "";
-                width: 0.5rem;
-                height: 0.5rem;
-                border-radius: 50%;
-                background: var(--signal);
-            }
-        }
-
-        &__icon { width: 1.5rem; height: 1.5rem; }
-        &__icon--close,
-        &.is-open &__icon--open { display: none; }
-        &.is-open &__icon--close { display: block; }
+        &__full { display: none; }
+        &__short { display: inline; }
     }
-
-    @media (max-width: 860px) and (prefers-reduced-motion: no-preference) {
-        &.is-open ul { animation: menu-in 0.2s var(--ease-out); }
-    }
-}
-
-@keyframes menu-in {
-    from { opacity: 0; transform: translateY(-0.5rem); }
-}
-
-.visually-hidden {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    clip-path: inset(50%);
-    white-space: nowrap;
 }
 
 .column { min-width: 0; }
@@ -810,55 +781,6 @@ svg.fill { fill: currentColor; stroke: none; }
     }
 }
 
-// ---------- Projects: boarding-pass layout ----------
-.passes { display: grid; gap: 1.25rem; }
-
-.pass {
-    display: grid;
-    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
-    background: var(--paper);
-    border-radius: 3px;
-    overflow: hidden;
-    box-shadow: var(--shadow-lift);
-
-    &__image {
-        width: 100%;
-        height: 100%;
-        min-height: 15rem;
-        object-fit: scale-down;
-        padding: clamp(1rem, 3vw, 1.75rem);
-        background: var(--stock);
-    }
-
-    &__stub {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.6rem;
-        padding: clamp(1.5rem, 3vw, 2rem);
-        border-left: 2px dashed var(--perf);
-        .link { margin-top: auto; padding-top: 0.5rem; }
-    }
-
-    &__title {
-        @extend %condensed-caps;
-        font-weight: 700;
-        font-size: clamp(1.5rem, 2.8vw, 1.875rem);
-        line-height: 1;
-    }
-
-    &__meta { color: var(--ink-muted); font-size: 0.9375rem; }
-
-    &__ref { font: 500 0.8125rem/1.3 var(--mono); color: var(--route); }
-
-    @media (max-width: 760px) {
-        grid-template-columns: minmax(0, 1fr);
-        &__image { min-height: 0; aspect-ratio: 16 / 10; }
-        &__stub { border-left: 0; border-top: 2px dashed var(--perf); }
-    }
-}
-
 // ---------- Manifest tables (skills, certifications) ----------
 .manifest {
     width: 100%;
@@ -1013,6 +935,9 @@ svg.fill { fill: currentColor; stroke: none; }
     font-size: 0.875rem;
     padding: 1.25rem 0 calc(1.25rem + env(safe-area-inset-bottom));
 
+    // Clear the phone tab bar
+    @media (max-width: 860px) { padding-bottom: calc(5rem + env(safe-area-inset-bottom)); }
+
     &__inner {
         display: flex;
         justify-content: space-between;
@@ -1053,7 +978,7 @@ svg.fill { fill: currentColor; stroke: none; }
     :root { --stock: #fff; --paper: #fff; --mast: #fff; --mast-ink: #000; --mast-muted: #333; --ink: #000; }
     .index, .masthead__actions, #contact, .skip-link { display: none; }
     .layout { grid-template-columns: 1fr; }
-    .ticket, .leg, .pass, .manifest, .entries { box-shadow: none; border: 1px solid var(--rule); break-inside: avoid; }
+    .ticket, .leg, .repos, .manifest, .entries { box-shadow: none; border: 1px solid var(--rule); break-inside: avoid; }
     .running-head, .footer__inner { border-color: var(--perf); }
 }
 
@@ -1111,6 +1036,8 @@ svg.fill { fill: currentColor; stroke: none; }
 
     @media (max-width: 860px) { margin-top: 2rem; }
 }
+
+.section__more { margin-top: 1rem; }
 
 .section__lede {
     max-width: 42em;

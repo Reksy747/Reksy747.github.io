@@ -150,7 +150,7 @@ components:
 
 **Creative North Star: "The Itinerary"**
 
-The CV is an itinerary of record: a dated, confirmed route of legs from Klaten through Yogyakarta to Jakarta, printed on cool ticket stock, with the current leg struck forward in signal orange and stamped IN SERVICE. Every surface is a part of a travel document: a navy masthead band with a mono running head, a white route strip, ticket panels with perforated stubs, boarding passes for projects, manifest tables for skills and certifications.
+The CV is an itinerary of record: a dated, confirmed route of legs from Klaten through Yogyakarta to Jakarta, printed on cool ticket stock, with the current leg struck forward in signal orange and stamped IN SERVICE. Every surface is a part of a travel document: a navy masthead band with a mono running head, a white route strip, ticket panels with perforated stubs, a repository list for projects, manifest tables for skills and certifications.
 
 The page is calm and dense in the way a timetable is dense: two inks on stock, condensed capitals for names and places, a plain reading face for everything a person reads, and mono reserved for the things a ticket would print by machine (dates, refs, codes). One continuous route line runs through the experience section and the route strip; stations are round markers on it. Depth is paper resting on stock, not floating cards.
 
@@ -234,7 +234,7 @@ Rhythm: sections are spaced `section`; ticket parts pad `panel`; legs pad `leg`;
 Hybrid, and quiet: paper panels lift off stock with a soft ambient shadow tinted with navy ink, and parts within a panel are separated by dashed perforations, not by shadow or colour. Panel shadows are theme tokens (`--shadow-rest`, `--shadow-lift`) redefined in the `night` mixin: at night a navy-tinted shadow would vanish, so the edge is drawn by a faint white hairline ring and lift adds a dark drop, on top of the paper-over-stock tonal step.
 
 ### Shadow Vocabulary
-- **Panel lift** (`--shadow-lift`: `0 1px 2px rgba(19, 32, 43, 0.06), 0 6px 20px rgba(19, 32, 43, 0.06)`; night `0 0 0 1px rgba(255, 255, 255, 0.08), 0 8px 24px rgba(0, 0, 0, 0.45)`): tickets, boarding passes, the summary stub, case studies and the troubleshooting panel.
+- **Panel lift** (`--shadow-lift`: `0 1px 2px rgba(19, 32, 43, 0.06), 0 6px 20px rgba(19, 32, 43, 0.06)`; night `0 0 0 1px rgba(255, 255, 255, 0.08), 0 8px 24px rgba(0, 0, 0, 0.45)`): tickets, the summary stub, case studies and the troubleshooting panel.
 - **Panel rest** (`--shadow-rest`: `0 1px 2px rgba(19, 32, 43, 0.05)`; night `0 0 0 1px rgba(255, 255, 255, 0.06)`): legs, manifest tables, entry lists, the repositories list.
 - **Live halo** (`box-shadow: 0 0 0 5px color-mix(in srgb, var(--signal) 22%, transparent)`): the current station marker; the current leg tick uses a 3px stock ring plus a 6px 30% signal ring. The arrival pulse on a targeted station marker expands a 55% signal ring to 14px and fades.
 
@@ -263,7 +263,7 @@ Firm, flat and ticket-office plain.
 - **Shadow Strategy:** panel lift for tickets, passes and summary; panel rest for legs, manifests, entries.
 - **Border:** none on the panel; perforations (2px dashed `perf`) between main part and stub, 1px dashed between entries, 1px solid `rule` between table rows.
 - **Internal Padding:** `panel` for ticket and pass parts, `leg` for legs, 1.25rem by clamp(1rem, 2.5vw, 1.5rem) for entries and repository rows.
-- **Image plate:** a boarding pass shows its project screenshot at native size on a stock plate (`object-fit: scale-down`, min height 15rem, padded); screenshots are never upscaled or cropped.
+- **Repositories:** text rows only, no screenshots. On the CV, Projects is a three-row preview of the portfolio repository list with a link to the full list; repositories are described once, on the portfolio.
 
 ### Inputs / Fields
 - **Style:** stock well, no side borders, 2px faded-ink underline, 2px top corners, 0.75rem by 0.85rem padding, signal caret.
@@ -271,7 +271,7 @@ Firm, flat and ticket-office plain.
 - **Error:** underline turns `error` on `:user-invalid`; status text in `error`, sent status in route blue.
 
 ### Navigation
-- **Section index:** 2px ink top rule, 1px rule between items, Source Sans 3 600 at 0.9375rem in faded ink with a small hollow ring before each label. Hover and active go to ink; the active ring fills signal. On phones (860px and below) it becomes a slim sticky bar on stock: the current section name with a signal dot on the left, a drawn burger icon on the right (48px tall, turns to a close icon when open). The burger drops the full section list below the bar with panel lift and a 2px ink bottom rule; choosing a section, tapping outside or pressing Escape closes it. Without JS the list shows open.
+- **Section index:** 2px ink top rule, 1px rule between items, Source Sans 3 600 at 0.9375rem in faded ink with a small hollow ring before each label. Hover and active go to ink; the active ring fills signal. On phones (860px and below) it becomes a fixed bottom tab bar on paper with a 1px rule on top: five equal tabs, each 56px tall with a 20px line icon (inline SVG, 1.75 stroke, currentColor; phones only, the ring is hidden there) above a 0.75rem label, the active tab in signal ink. Organizations and Certifications drop off the bar and light Education while in view; long portfolio labels switch to short forms (Scope, Cases, Repos, Incidents). The footer pads 5rem so the bar never covers it.
 - **Route strip:** the career route as navigation: three stations on the route line, each a link to its station in Experience; the current station is filled signal with the live halo and its city set in signal ink. Hover scales the marker 1.2 and underlines the city.
 
 ### Rubber Stamp (signature)
