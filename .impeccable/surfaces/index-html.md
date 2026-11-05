@@ -1,11 +1,11 @@
 ---
 version: 1
 slug: "index-html"
-primary_target: "index.html"
+primary_target: "cv.html"
 related_targets: []
 ---
 
-# Surface: CV (index.html)
+# Surface: CV (cv.html)
 
 Mode: Read. The visitor (recruiter, engineering manager) wants to understand fit fast: current role, multi-cloud operations depth, résumé, contact. Must read as a real CV, not a landing page. Must keep: project screenshots, Formspree contact form, automatic dark mode. Profile photo optional.
 

@@ -296,6 +296,19 @@ Everything else is supporting continuity and feedback, runs only under `prefers-
 
 State transitions elsewhere are 0.2s on the same ease. Under reduce, transitions collapse to 0.01ms and smooth scroll is off.
 
+## Terminal home
+
+`index.html` is a terminal; the Itinerary system above applies to `cv.html` and `portfolio.html`. Source: `scss/terminal.scss` → `css/terminal.css`.
+
+- **Themes:** `[data-theme]` on `<html>`: dark (navy `#1d2a35`, default dark), light (default when the system is light), dracula, nord, ubuntu, matrix. Each defines `--term-bg`, `--term-fg`, `--term-muted`, `--term-accent`, `--term-link`, `--term-prompt`; every colour is ≥ 4.5:1 against its background. Saved under `localStorage['terminal-theme']`.
+- **Type:** JetBrains Mono 500 throughout, 0.9375rem; the input is 1rem so iOS does not zoom.
+- **Prompt:** `visitor@reksy747.github.io:~$` with `.term__user` in the accent colour and `.term__host` in the prompt colour; the rest in the text colour.
+- **Classes:** `.term`, `.term__intro` (welcome block, reprinted by `welcome`), `.term__banner` (one 58-column block-letter "REKSY"; its font size shrinks with the viewport, about 9.6px at 375px, so it never overflows), `.term__rule` (`----` separators), `.term__code`, `.term__out` (`role="log"`), `.term__line`, `.term__echo`, `.term__heading`, `.term__list`, `.term__cmd` (tappable command button), `.term__muted`, `.term__form`, `.term__prompt`, `.term__input`, `.sr-only`. No navbar or footer: the page is the terminal alone; `cv`/`gui`/`projects`/`email` lead out, and `<noscript>` keeps plain links to `cv.html` and `portfolio.html`.
+- **Links:** link colour with a dashed underline; command buttons use the prompt colour.
+- **Help table:** `.term__list--plain` rows are a grid (`11ch` name column, `1rem` gap) with `.term__note` descriptions in the text colour; ligatures are off so `=>` shows as typed.
+- **Wrapping:** output uses `pre-wrap` with `overflow-wrap: anywhere`; no horizontal scroll from 320px up.
+- **Responsive:** side and bottom padding respect the notch and home bar (`env(safe-area-inset-*)`, the page uses `viewport-fit=cover`). The input stays beside the prompt while about 5 characters fit (on 320px it moves to its own line). At heights of 500px or less (a phone held sideways) spacing tightens and the banner drops to 11px, so the prompt is visible without scrolling.
+
 ## Do's and Don'ts
 
 ### Do:

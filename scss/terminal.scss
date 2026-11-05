@@ -1,0 +1,195 @@
+/*!
+    Petrus Chanel Reksy Arfila — terminal home
+    Source: scss/terminal.scss → compiled to css/terminal.css (npm run build)
+*/
+
+@use "sass:map";
+
+@font-face {
+    font-family: "JetBrains Mono";
+    src: url("../fonts/jetbrains-mono-latin-500-normal.woff2") format("woff2");
+    font-weight: 500;
+    font-display: swap;
+}
+
+// ---------- Themes: each pair meets 4.5:1 against its background ----------
+$themes: (
+    dark:    (bg: #1d2a35, fg: #cbd5e1, muted: #94a3b8, accent: #ff9d00, link: #ff9d00, prompt: #05ce91),
+    dracula: (bg: #282a36, fg: #f8f8f2, muted: #bfc3d9, accent: #ff79c6, link: #8be9fd, prompt: #50fa7b),
+    nord:    (bg: #2e3440, fg: #e5e9f0, muted: #b4bccb, accent: #88c0d0, link: #8fbcbb, prompt: #a3be8c),
+    ubuntu:  (bg: #300a24, fg: #ffffff, muted: #d3c3ce, accent: #f9875a, link: #8ec5ff, prompt: #87d75f),
+    matrix:  (bg: #000000, fg: #00ff41, muted: #4fc96a, accent: #b6ffb6, link: #7dffb0, prompt: #00ff41),
+    light:   (bg: #fafafa, fg: #1f2328, muted: #57606a, accent: #8250df, link: #0550ae, prompt: #116329)
+);
+
+@each $name, $c in $themes {
+    [data-theme="#{$name}"] {
+        --term-bg: #{map.get($c, bg)};
+        --term-fg: #{map.get($c, fg)};
+        --term-muted: #{map.get($c, muted)};
+        --term-accent: #{map.get($c, accent)};
+        --term-link: #{map.get($c, link)};
+        --term-prompt: #{map.get($c, prompt)};
+        color-scheme: dark;
+    }
+}
+
+[data-theme="light"] { color-scheme: light; }
+
+// ---------- Base ----------
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+    background: var(--term-bg, #1d2a35);
+    color: var(--term-fg, #cbd5e1);
+    -webkit-text-size-adjust: 100%;
+}
+@media (prefers-reduced-motion: no-preference) {
+    html { scroll-behavior: smooth; }
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: var(--term-bg);
+    color: var(--term-fg);
+    font: 500 0.9375rem/1.55 "JetBrains Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+    font-variant-ligatures: none; // show "=>" as typed, not as an arrow glyph
+}
+
+a {
+    color: var(--term-link);
+    text-decoration: underline dashed;
+    text-underline-offset: 0.3em;
+}
+a:focus-visible, button:focus-visible, input:focus-visible {
+    outline: 2px solid var(--term-accent);
+    outline-offset: 2px;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+// ---------- Terminal ----------
+.term {
+    flex: 1;
+    width: 100%;
+    max-width: 60rem;
+    margin: 0 auto;
+    padding: 1.25rem max(1rem, env(safe-area-inset-right)) calc(2rem + env(safe-area-inset-bottom)) max(1rem, env(safe-area-inset-left));
+    cursor: text;
+
+    // 58 columns of JetBrains Mono (0.6em each ≈ 35em): shrink with the viewport so it never overflows a phone
+    &__banner {
+        margin: 1.25rem 0;
+        color: var(--term-fg);
+        font: inherit;
+        font-size: min(0.875rem, calc((100vw - 2.5rem) / 35));
+        line-height: 1.2;
+        white-space: pre;
+        overflow: hidden;
+    }
+
+    &__line, &__out {
+        margin: 0;
+        white-space: pre-wrap;
+        overflow-wrap: anywhere;
+    }
+
+    &__line { margin: 0.15rem 0; }
+    &__intro &__line { margin: 0.9rem 0; }
+    &__rule { color: var(--term-fg); }
+    // Welcome sentence: a comfortable line length, and names like "Alibaba Cloud" never split across lines
+    // Three fixed lines; each may wrap on its own on narrow phones, never mid-name
+    // Same size as the rest of the terminal. On narrow screens a line breaks only between groups:
+    // before "(Version 1.0.1)" and after "working with", so the platform list stays on one line.
+    &__lede { white-space: normal; }
+    &__group { display: inline-block; }
+    &__lede > span { display: block; }
+    &__keep { white-space: nowrap; }
+    &__code { color: var(--term-prompt); font: inherit; }
+    &__user { color: var(--term-accent); }
+    &__host { color: var(--term-prompt); }
+    &__echo { margin-top: 0.75rem; }
+    &__heading { color: var(--term-accent); font-weight: 500; margin: 0.5rem 0 0.25rem; }
+    &__muted { color: var(--term-muted); }
+
+    &__list {
+        margin: 0.25rem 0;
+        padding: 0 0 0 1.25rem;
+        list-style: "– ";
+
+        li { margin: 0.2rem 0; overflow-wrap: anywhere; }
+    }
+
+    &__cmd {
+        padding: 0.25rem 0;
+        border: 0;
+        background: none;
+        color: var(--term-prompt);
+        font: inherit;
+        text-align: left;
+        text-decoration: none;
+        text-underline-offset: 0.2em;
+        cursor: pointer;
+
+        &:hover { text-decoration: underline; }
+    }
+
+    // help: command names in an aligned column, "- description" beside them
+    &__list--plain {
+        padding: 0;
+        list-style: none;
+
+        li {
+            display: grid;
+            grid-template-columns: 11ch 1fr;
+            align-items: start;
+            gap: 0 1rem;
+            margin: 0;
+        }
+        .term__cmd { padding: 0; }
+    }
+    &__note { color: var(--term-fg); }
+
+    &__form {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        gap: 0 0.6rem;
+        margin-top: 0.75rem;
+    }
+    &__prompt { color: var(--term-fg); white-space: nowrap; }
+    &__input {
+        flex: 1 1 5rem;
+        min-width: 0;
+        padding: 0.25rem 0;
+        border: 0;
+        background: transparent;
+        color: var(--term-fg);
+        caret-color: var(--term-accent);
+        font: inherit;
+        font-size: 1rem; // 16px: stops iOS zooming on focus
+    }
+    &__input:focus-visible { outline: none; }
+    &__form:focus-within { outline: 1px dashed var(--term-muted); outline-offset: 4px; }
+}
+
+// Short screens (a phone held sideways): tighten vertical spacing so the prompt shows without scrolling
+@media (max-height: 500px) {
+    .term { padding-top: 0.5rem; }
+    .term__banner { margin: 0.5rem 0; font-size: 0.6875rem; }
+    .term__intro .term__line { margin: 0.35rem 0; }
+    .term__form { margin-top: 0.4rem; }
+}

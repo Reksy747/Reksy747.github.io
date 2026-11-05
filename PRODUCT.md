@@ -44,7 +44,7 @@ Hands-on SRE experience across **both AWS and GCP**: Kubernetes (EKS, GKE), depl
 
 ## Evidence on Hand
 
-- Work history, education, organizations and certifications as written in `index.html`.
+- Work history, education, organizations and certifications as written in `cv.html`.
 - Projects with screenshots: E-learning Dutatani (`images/project.png`, Laravel, `github.com/Reksy747/dutani`) and BloodCare (`images/project2.png`, Java, `github.com/Reksy747/BloodCare`).
 - Unused images in the repo: `images/cicdproject.png`, `images/deploy.JPG`, `images/lead-bg.jpg`. These are not yet tied to a described project; ask before presenting them as one.
 - **Absent, do not fabricate:** metrics or impact numbers (uptime, cost savings, deploy counts), testimonials, employer logos, newer roles, and SRE/infrastructure project write-ups. Ask Reksy for real figures before adding any.
