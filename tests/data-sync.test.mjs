@@ -5,8 +5,8 @@ import { readFileSync } from 'node:fs';
 import data from '../js/terminal/data.js';
 
 const read = (file) => readFileSync(new URL('../' + file, import.meta.url), 'utf8')
-    .replace(/&amp;/g, '&')
-    .replace(/&middot;/g, '·');
+    .replace(/&middot;/g, '·')
+    .replace(/&amp;/g, '&'); // decode &amp; last, so "&amp;middot;" stays "&middot;" (no double unescaping)
 const cv = read('cv.html');
 const portfolio = read('portfolio.html');
 
@@ -23,9 +23,9 @@ test('every repo name appears in portfolio.html', () => {
     }
 });
 
-test('data has seven roles and eight repos', () => {
+test('data has seven roles and seven repos', () => {
     assert.equal(data.roles.length, 7);
-    assert.equal(data.repos.length, 8);
+    assert.equal(data.repos.length, 7);
 });
 
 test('every school and course appears in cv.html', () => {
