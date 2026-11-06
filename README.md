@@ -61,8 +61,8 @@ I'm not trying to become an expert overnight. I'm curious, and I'm learning one 
 ## Tech Stack
 
 **Frontend** - HTML, JavaScript (ES modules, no framework)  
-**Styling** - [Sass](https://sass-lang.com/), built with [gulp](https://gulpjs.com/)  
-**Fonts** - [JetBrains Mono](https://www.jetbrains.com/lp/mono/) via [Fontsource](https://fontsource.org/), self-hosted  
+**Styling** - [Sass](https://sass-lang.com/), compiled with the `sass` command line tool  
+**Fonts** - JetBrains Mono, Barlow Condensed and Source Sans 3, self-hosted. `fonts/` holds the latin subsets (Barlow Condensed 500, 600 and 700; Source Sans 3 400, 400 italic, 600 and 700; JetBrains Mono 500) from [Fontsource](https://fontsource.org/) 5.x, committed to the repository  
 **Offline** - Service worker and web app manifest  
 **Testing** - [Node.js test runner](https://nodejs.org/api/test.html)  
 **Deployment** - [GitHub Pages](https://pages.github.com/)
@@ -93,10 +93,16 @@ Install dependencies
 npm install
 ```
 
-Build the CSS and JavaScript
+Build the CSS (needed before previewing, because `css/` is generated)
 
 ```bash
-npm run build
+npm run build:css
+```
+
+While you work, rebuild the CSS on every change
+
+```bash
+npm run dev:css
 ```
 
 Run the tests
@@ -115,7 +121,7 @@ Then open http://localhost:5173.
 
 ## Deploying
 
-GitHub Pages serves the `master` branch as it is, so commit the compiled files in `css/` and `js/` along with the sources. When you change anything the service worker caches, bump `VERSION` in `sw.js` so returning visitors drop their old offline copy.
+Pushing to `master` runs the GitHub Actions workflow in `.github/workflows/deploy.yml`. It checks for merge-conflict markers, runs the tests, builds `dist/` with `npm run build`, checks that every link, font, manifest icon and precached file exists, and publishes `dist/` to GitHub Pages. Pull requests run the same checks without deploying, and you can also run the workflow by hand from the Actions tab. Under Settings, Pages, the source must be set to "GitHub Actions". The build stamps `VERSION` in the deployed `sw.js` with a hash of the site's files, so returning visitors drop their old offline copy, and pick up a changed icon or favicon, without you editing anything.
 
 ## Inspiration and Credits
 

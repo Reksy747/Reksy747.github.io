@@ -4,7 +4,7 @@
     Source: scss/styles.scss → compiled to css/styles.css (npm run build)
 */
 
-// ---------- Fonts (self-hosted, copied from @fontsource by `gulp fonts`) ----------
+// ---------- Fonts (self-hosted: the woff2 files in fonts/ are committed) ----------
 @mixin face($family, $file, $weight, $style: normal) {
     @font-face {
         font-family: $family;

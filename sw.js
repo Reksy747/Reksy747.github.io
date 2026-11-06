@@ -9,7 +9,7 @@ const PRECACHE = [
     '/portfolio.html',
     '/css/styles.css',
     '/css/terminal.css',
-    '/js/scripts.min.js',
+    '/js/scripts.js',
     '/js/terminal/core.js',
     '/js/terminal/data.js',
     '/js/terminal/ui.js',

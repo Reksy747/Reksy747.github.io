@@ -1,0 +1,57 @@
+name: Build and deploy to GitHub Pages
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+  workflow_dispatch:
+
+# Read-only by default. Only the deploy job gets the write access that publishing to Pages needs.
+permissions:
+  contents: read
+
+jobs:
+  # Runs on every push and pull request. Pushes to master, and manual runs on master, upload the site.
+  build:
+    runs-on: ubuntu-latest
+    concurrency:
+      group: "build-${{ github.ref }}"
+      cancel-in-progress: true
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 22
+          cache: npm
+      - name: Fail on merge-conflict markers
+        run: |
+          rc=0
+          git grep -nI -e '^<<<<<<< ' -e '^>>>>>>> ' -- . ':!node_modules' || rc=$?
+          # git grep exits 1 when nothing matches. Markers found (0) or an error (anything else) must fail the build.
+          [ "$rc" -eq 1 ] || exit 1
+      - run: npm ci
+      - run: npm test
+      - run: npm run build
+      - run: node scripts/check-dist.mjs
+      - if: (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && github.ref == 'refs/heads/master'
+        uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
+        with:
+          path: dist
+
+  # Deployments queue instead of cancelling each other, and never run for pull requests.
+  deploy:
+    needs: build
+    if: (github.event_name == 'push' || github.event_name == 'workflow_dispatch') && github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    concurrency:
+      group: pages
+      cancel-in-progress: false
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1
