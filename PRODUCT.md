@@ -29,7 +29,7 @@ Hands-on SRE experience across **both AWS and GCP**: Kubernetes (EKS, GKE), depl
 ## Capabilities and Constraints
 
 - **Hosting:** static site on GitHub Pages (`Reksy747.github.io`). Plain HTML, CSS and vanilla JS, with no framework and no backend.
-- **Build:** SCSS compiled with gulp (`npm run build`) to `css/styles.css` and `js/scripts.min.js`. Both compiled files are committed because GitHub Pages serves them directly.
+- **Build:** SCSS compiled with the `sass` command line tool (`npm run build:css`) into `css/`. `npm run build` assembles `dist/`, which GitHub Actions deploys to GitHub Pages.
 - **Contact:** the form posts to Formspree (`https://formspree.io/f/xknagwwz`). Keep it.
 - **Résumé:** download links to Google Drive. Keep it.
 - **No third-party runtime dependencies** on the page (jQuery, Bootstrap and Font Awesome were removed for security). Keep it that way unless there's a clear need.
