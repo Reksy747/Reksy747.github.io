@@ -1,7 +1,7 @@
 // Terminal command logic. Pure: no DOM, no browser globals, so it runs under `node --test`.
 
-export const COMMANDS = ['about', 'cv', 'projects', 'education', 'socials', 'email', 'gui', 'echo', 'pwd', 'whoami', 'themes', 'history', 'welcome', 'help', 'clear'];
-export const ALIASES = { resume: 'cv', portfolio: 'projects' };
+export const COMMANDS = ['about', 'projects', 'education', 'socials', 'email', 'gui', 'echo', 'pwd', 'whoami', 'themes', 'history', 'welcome', 'help', 'clear'];
+export const ALIASES = { resume: 'gui' };
 export const THEMES = ['dark', 'light', 'dracula', 'nord', 'ubuntu', 'matrix'];
 export const THEME_KEY = 'terminal-theme';
 
@@ -42,14 +42,13 @@ const list = (items) => ({ type: 'list', items });
 const HELP = {
     about: 'about Reksy',
     clear: 'clear the terminal',
-    cv: 'open my full CV page (alias: resume)',
     echo: 'print out anything',
     education: 'my education background',
     email: 'send an email to me',
-    gui: 'go to my CV in GUI',
+    gui: 'go to my CV in GUI (alias: resume)',
     help: 'check available commands',
     history: 'view command history',
-    projects: 'open my portfolio page (alias: portfolio)',
+    projects: 'list my projects',
     pwd: 'print current working directory',
     socials: 'check out my social accounts',
     themes: "check available themes; 'themes set <name>' to switch",
@@ -71,13 +70,12 @@ const handlers = {
         ...data.profile.summary.map(text),
         text(`Base: ${data.profile.location} · Stack: ${data.profile.stack}`)
     ],
-    cv: (state, data, env) => [
+    gui: (state, data, env) => [
         heading('Experience'),
         list(data.roles.map((r) => text(`${r.title} · ${r.company} · ${r.years}`))),
         link('Full CV: cv.html', data.profile.cvUrl),
         link('Résumé (PDF)' + (env.online ? '' : ' (needs a connection)'), data.profile.resumeUrl)
     ],
-    gui: () => [text('Opening the CV page…')],
     projects: (state, data) => [
         heading('Repositories'),
         list(data.repos.map((r) => (r.url
@@ -131,8 +129,8 @@ export function run(input, state, data, env = { online: true }) {
         next = { ...next, theme: output.theme };
         output = output.blocks;
     }
-    // cv/gui and projects open their full pages; email opens a mail draft
-    const navigate = { cv: data.profile.cvUrl, gui: data.profile.cvUrl, projects: data.profile.portfolioUrl, email: emailOf(data) }[name] || null;
+    // gui opens the CV page; email opens a mail draft; everything else stays in the terminal
+    const navigate = { gui: data.profile.cvUrl, email: emailOf(data) }[name] || null;
     return { output, state: next, clear: false, navigate, welcome: false };
 }
 

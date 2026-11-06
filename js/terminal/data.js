@@ -6,7 +6,7 @@ const profile = {
     title: 'DevOps Engineer',
     employer: 'MEMBER.ID',
     location: 'South Jakarta · Hybrid',
-    stack: 'GCP · Alibaba Cloud · AWS · Kubernetes',
+    stack: 'GCP · Alibaba Cloud · AWS · On-premises',
     summary: [
         'I run cloud infrastructure on Google Cloud and Alibaba Cloud, on-premises Linux servers, and the CI/CD pipelines that deploy to them.',
         'Nearly five years designing, automating and maintaining infrastructure across cloud and on-premises environments: first as a Site Reliability Engineer at Pegipegi, now as a DevOps Engineer at MEMBER.ID.'

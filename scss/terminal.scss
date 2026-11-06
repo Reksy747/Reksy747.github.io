@@ -85,9 +85,8 @@ a:focus-visible, button:focus-visible, input:focus-visible {
 .term {
     flex: 1;
     width: 100%;
-    max-width: 60rem;
-    margin: 0 auto;
-    padding: 1.25rem max(1rem, env(safe-area-inset-right)) calc(2rem + env(safe-area-inset-bottom)) max(1rem, env(safe-area-inset-left));
+    // Fills the window and starts at the top-left, like a real terminal; no centred column
+    padding: 1rem max(1rem, env(safe-area-inset-right)) calc(2rem + env(safe-area-inset-bottom)) max(1rem, env(safe-area-inset-left));
     cursor: text;
 
     // 58 columns of JetBrains Mono (0.6em each ≈ 35em): shrink with the viewport so it never overflows a phone
@@ -182,8 +181,8 @@ a:focus-visible, button:focus-visible, input:focus-visible {
         font: inherit;
         font-size: 1rem; // 16px: stops iOS zooming on focus
     }
+    // No focus box: the blinking caret is the focus indicator, like a real terminal
     &__input:focus-visible { outline: none; }
-    &__form:focus-within { outline: 1px dashed var(--term-muted); outline-offset: 4px; }
 }
 
 // Short screens (a phone held sideways): tighten vertical spacing so the prompt shows without scrolling
