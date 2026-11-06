@@ -34,7 +34,7 @@ I'm not trying to become an expert overnight. I'm curious, and I'm learning one 
 - Go to previous and next command ⬆️⬇️
 - View command history 📖
 - Clear the screen 🧹 (Ctrl + l)
-- `cv` and `projects` open the full CV and portfolio pages 📄
+- `gui` opens the full CV page, and `projects` lists my repositories with a link to the portfolio 📄
 - PWA and offline support 🔥
 - Tested with Node's built-in test runner ✅
 
@@ -43,12 +43,11 @@ I'm not trying to become an expert overnight. I'm curious, and I'm learning one 
 | Command | What it does |
 | --- | --- |
 | `about` | about Reksy |
-| `cv` (or `resume`) | open my full CV page |
-| `projects` (or `portfolio`) | open my portfolio page |
+| `projects` | list my projects |
 | `education` | my education background |
 | `socials` | check out my social accounts |
 | `email` | send an email to me |
-| `gui` | go to my CV in GUI |
+| `gui` (or `resume`) | go to my CV in GUI |
 | `echo` | print out anything |
 | `pwd` | print current working directory |
 | `whoami` | about current user |

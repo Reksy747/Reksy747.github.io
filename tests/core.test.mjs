@@ -3,10 +3,11 @@ import assert from 'node:assert/strict';
 import { parse, initialState, loadTheme, saveTheme, THEME_KEY, THEMES } from '../js/terminal/core.js';
 
 test('parse trims, lowercases and resolves aliases', () => {
-    assert.deepEqual(parse('  RESUME  '), { name: 'cv', args: [] });
+    assert.deepEqual(parse('  RESUME  '), { name: 'gui', args: [] });
     assert.deepEqual(parse('Themes   SET  Nord'), { name: 'themes', args: ['set', 'nord'] });
     assert.deepEqual(parse(''), { name: '', args: [] });
-    assert.equal(parse('portfolio').name, 'projects');
+    assert.equal(parse('portfolio').name, 'portfolio');
+    assert.equal(parse('cv').name, 'cv');
 });
 
 test('loadTheme reads a valid saved theme', () => {
@@ -69,11 +70,11 @@ test('run: about prints the summary', () => {
     assert.ok(texts(run('about', fresh(), data).output).includes(data.profile.summary[0]));
 });
 
-test('run: resume links the CV page and the PDF, flagged offline', () => {
-    const on = links(run('resume', fresh(), data).output);
+test('run: gui (and resume) link the CV page and the PDF, flagged offline', () => {
+    const on = links(run('gui', fresh(), data).output);
     assert.ok(on.some((l) => l.href === 'cv.html'));
     assert.ok(on.some((l) => l.href === data.profile.resumeUrl));
-    const off = links(run('resume', fresh(), data, { online: false }).output);
+    const off = links(run('gui', fresh(), data, { online: false }).output);
     assert.ok(off.find((l) => l.href === data.profile.resumeUrl).text.endsWith('(needs a connection)'));
 });
 
@@ -115,21 +116,22 @@ test('run: clear sets the clear flag with no output', () => {
 test('run: history lists earlier commands, numbered', () => {
     let s = fresh();
     s = run('about', s, data).state;
-    s = run('cv', s, data).state;
+    s = run('gui', s, data).state;
     const t = texts(run('history', s, data).output);
     assert.match(t, /1\s+about/);
-    assert.match(t, /2\s+cv/);
+    assert.match(t, /2\s+gui/);
 });
 
 test('complete: single, several, none, empty, themes, alias', () => {
     assert.deepEqual(complete('ab'), { value: 'about ', matches: ['about'] });
-    const c = complete('c');
-    assert.equal(c.value, 'c');
-    assert.ok(c.matches.includes('cv') && c.matches.includes('clear'));
+    const c = complete('e');
+    assert.equal(c.value, 'e');
+    assert.ok(c.matches.includes('echo') && c.matches.includes('email'));
+    assert.deepEqual(complete('c').matches, ['clear']);
     assert.deepEqual(complete('xyz'), { value: 'xyz', matches: [] });
     const e = complete('');
     assert.equal(e.value, '');
-    assert.equal(e.matches.length, 17);
+    assert.equal(e.matches.length, 15);
     assert.equal(complete('themes set dr').value, 'themes set dracula');
     assert.equal(complete('themes set da').value, 'themes set dark');
     assert.equal(complete('res').value, 'resume ');
@@ -151,14 +153,15 @@ test('stepHistory: walks both ends', () => {
     assert.equal(r.state.cursor, null);
 });
 
-test('run: cv and resume navigate to the CV page', () => {
-    assert.equal(run('cv', fresh(), data).navigate, 'cv.html');
+test('run: gui and resume navigate to the CV page, cv does not', () => {
+    assert.equal(run('gui', fresh(), data).navigate, 'cv.html');
+    assert.equal(run('cv', fresh(), data).navigate, null);
     assert.equal(run('RESUME', fresh(), data).navigate, 'cv.html');
 });
 
-test('run: projects and portfolio navigate to the portfolio page', () => {
-    assert.equal(run('projects', fresh(), data).navigate, 'portfolio.html');
-    assert.equal(run('portfolio', fresh(), data).navigate, 'portfolio.html');
+test('run: projects and portfolio do not navigate away from the terminal', () => {
+    assert.equal(run('projects', fresh(), data).navigate, null);
+    assert.equal(run('portfolio', fresh(), data).navigate, null);
 });
 
 test('run: other commands do not navigate', () => {

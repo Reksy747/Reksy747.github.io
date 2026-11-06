@@ -23,7 +23,7 @@ Hands-on SRE experience across **both AWS and GCP**: Kubernetes (EKS, GKE), depl
 ## Operating Context
 
 - Visitors usually arrive from a job application, LinkedIn or a recruiter's link, and read on whatever device they have. Mobile matters as much as desktop.
-- The site is a single page: About, Experience, Education, Organizations, Projects, Skills, Licenses & certifications, Contact.
+- The site is a single page: About, Experience, Education, Organizations, Skills, Licenses & certifications, Contact. Projects live on the portfolio page only.
 - The full résumé is a separate document on Google Drive; the site is the overview, the résumé is the artifact recruiters forward.
 
 ## Capabilities and Constraints
