@@ -1,5 +1,5 @@
 // Terminal page: DOM, keyboard and focus only. All command logic lives in core.js.
-import { run, complete, stepHistory, initialState, loadTheme, saveTheme } from './core.js';
+import { run, complete, stepHistory, initialState, loadTheme, saveTheme, loadTodos, saveTodos, formatWeather } from './core.js';
 import data from './data.js';
 
 const term = document.querySelector('.term');
@@ -12,7 +12,7 @@ const intro = term.querySelector('.term__intro');
 let storage = null;
 try { storage = window.localStorage; } catch { storage = null; }
 
-let state = initialState(loadTheme(storage, window.matchMedia('(prefers-color-scheme: light)').matches));
+let state = initialState(loadTheme(storage, window.matchMedia('(prefers-color-scheme: light)').matches), loadTodos(storage));
 document.documentElement.dataset.theme = state.theme;
 
 const el = (tag, className, text) => {
@@ -70,9 +70,23 @@ function echo(value) {
     return line;
 }
 
+// Prints the current weather under the weather command, or why it failed
+async function showWeather(url) {
+    let line;
+    try {
+        const response = await fetch(url);
+        line = response.ok ? formatWeather(await response.json()) : `weather: wttr.in answered HTTP ${response.status}.`;
+    } catch {
+        // wttr.in answers an unknown place without CORS headers, so it lands here too
+        line = 'weather: no report for that place, or wttr.in is unreachable. Check the city name and try again.';
+    }
+    print([el('p', 'term__line', line)]);
+}
+
 function execute(value) {
     const result = run(value, state, data, { online: navigator.onLine });
     const themeBefore = state.theme;
+    const todosBefore = state.todos;
     state = result.state;
     if (result.welcome) {
         print([intro.cloneNode(true)]);
@@ -86,7 +100,10 @@ function execute(value) {
         document.documentElement.dataset.theme = state.theme;
         saveTheme(storage, state.theme);
     }
+    if (state.todos !== todosBefore) saveTodos(storage, state.todos);
     input.value = '';
+    if (result.weather) showWeather(result.weather);
+    if (result.newTab) window.open(result.newTab, '_blank', 'noopener,noreferrer');
     if (result.navigate) window.location.assign(result.navigate);
 }
 
