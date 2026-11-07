@@ -35,7 +35,7 @@ test('saveTheme writes under the theme key', () => {
 });
 
 test('initialState starts empty', () => {
-    assert.deepEqual(initialState('nord'), { history: [], cursor: null, theme: 'nord' });
+    assert.deepEqual(initialState('nord'), { history: [], cursor: null, theme: 'nord', todos: [] });
 });
 
 // ---- Task 4: commands, autocomplete, history ----
@@ -70,12 +70,8 @@ test('run: about prints the summary', () => {
     assert.ok(texts(run('about', fresh(), data).output).includes(data.profile.summary[0]));
 });
 
-test('run: gui (and resume) link the CV page and the PDF, flagged offline', () => {
-    const on = links(run('gui', fresh(), data).output);
-    assert.ok(on.some((l) => l.href === 'cv.html'));
-    assert.ok(on.some((l) => l.href === data.profile.resumeUrl));
-    const off = links(run('gui', fresh(), data, { online: false }).output);
-    assert.ok(off.find((l) => l.href === data.profile.resumeUrl).text.endsWith('(needs a connection)'));
+test('run: gui prints nothing before it navigates to the CV page', () => {
+    assert.deepEqual(run('gui', fresh(), data).output, []);
 });
 
 test('run: projects lists every repo and links the portfolio', () => {
@@ -127,11 +123,11 @@ test('complete: single, several, none, empty, themes, alias', () => {
     const c = complete('e');
     assert.equal(c.value, 'e');
     assert.ok(c.matches.includes('echo') && c.matches.includes('email'));
-    assert.deepEqual(complete('c').matches, ['clear']);
+    assert.deepEqual([...complete('c').matches].sort(), ['clear', 'curl']);
     assert.deepEqual(complete('xyz'), { value: 'xyz', matches: [] });
     const e = complete('');
     assert.equal(e.value, '');
-    assert.equal(e.matches.length, 15);
+    assert.equal(e.matches.length, 21);
     assert.equal(complete('themes set dr').value, 'themes set dracula');
     assert.equal(complete('themes set da').value, 'themes set dark');
     assert.equal(complete('res').value, 'resume ');
@@ -225,9 +221,105 @@ test('pwd and whoami', () => {
     assert.equal(texts(run('whoami', fresh(), data).output), 'visitor');
 });
 
-test('complete: e lists echo, education, email', () => {
+test('complete: e lists echo, education, email, exit', () => {
     const r = complete('e');
     assert.equal(r.value, 'e');
-    assert.deepEqual([...r.matches].sort(), ['echo', 'education', 'email']);
+    assert.deepEqual([...r.matches].sort(), ['echo', 'education', 'email', 'exit']);
     assert.equal(complete('ed').value, 'education ');
+});
+
+// ---- curl, hostname, todo, weather, exit ----
+import { loadTodos, saveTodos, TODO_KEY, formatWeather } from '../js/terminal/core.js';
+
+test('sudo opens the video in a new tab, prints nothing, stays on the page', () => {
+    const r = run('sudo rm -rf /', fresh(), data);
+    assert.equal(r.newTab, 'https://youtu.be/dQw4w9WgXcQ');
+    assert.deepEqual(r.output, []);
+    assert.equal(r.navigate, null);
+    assert.equal(run('about', fresh(), data).newTab, null);
+});
+
+test('hostname prints the site host', () => {
+    assert.equal(texts(run('hostname', fresh(), data).output), 'reksy747.github.io');
+});
+
+test('exit stays on the page with a joke', () => {
+    const r = run('exit', fresh(), data);
+    assert.equal(texts(r.output), "There is no escape. Try 'gui' instead.");
+    assert.equal(r.navigate, null);
+});
+
+test('curl on this site (or no argument) prints a JSON profile card', () => {
+    for (const c of ['curl', 'curl reksy747.github.io', 'curl https://Reksy747.github.io/']) {
+        const card = JSON.parse(texts(run(c, fresh(), data).output));
+        assert.equal(card.name, data.profile.name, c);
+        assert.equal(card.cv, 'https://reksy747.github.io/cv.html', c);
+    }
+});
+
+test('curl on any other host explains CORS and makes no request', () => {
+    const r = run('curl https://example.com', fresh(), data);
+    assert.match(texts(r.output), /^curl: \(7\) Failed to connect to https:\/\/example\.com: .*CORS/);
+    assert.equal(r.weather, null);
+});
+
+test('weather asks the UI to fetch wttr.in, Jakarta by default, city kept as typed', () => {
+    const r = run('weather', fresh(), data);
+    assert.deepEqual(r.output, []);
+    assert.equal(r.weather, 'https://wttr.in/Jakarta?format=j2');
+    assert.equal(run('weather New York', fresh(), data).weather, 'https://wttr.in/New%20York?format=j2');
+    assert.equal(run('weather ../x?y', fresh(), data).weather, 'https://wttr.in/..%2Fx%3Fy?format=j2');
+});
+
+test('formatWeather turns wttr.in j2 JSON into one line, and throws on a bad shape', () => {
+    const json = {
+        current_condition: [{ temp_C: '27', FeelsLikeC: '29', humidity: '79', windspeedKmph: '4', weatherDesc: [{ value: 'Partly Cloudy ' }] }],
+        nearest_area: [{ areaName: [{ value: 'Jakarta Pusat' }], country: [{ value: 'Indonesia' }] }]
+    };
+    assert.equal(formatWeather(json), 'Jakarta Pusat, Indonesia: Partly Cloudy, 27°C (feels like 29°C), humidity 79%, wind 4 km/h');
+    assert.throws(() => formatWeather({}));
+});
+
+test('weather offline prints a message and fetches nothing', () => {
+    const r = run('weather', fresh(), data, { online: false });
+    assert.equal(r.weather, null);
+    assert.match(texts(r.output), /needs a connection/);
+});
+
+test('todo: add keeps case, list numbers items, done marks one, clear empties', () => {
+    let s = fresh();
+    let r = run('todo add Learn Kubernetes', s, data);
+    assert.equal(texts(r.output), 'Added #1.');
+    s = run('todo add write blog', r.state, data).state;
+    assert.deepEqual(s.todos, [{ text: 'Learn Kubernetes', done: false }, { text: 'write blog', done: false }]);
+    r = run('todo done 2', s, data);
+    assert.equal(r.state.todos[1].done, true);
+    assert.equal(texts(run('todo', r.state, data).output), '1. [ ] Learn Kubernetes\n2. [x] write blog');
+    r = run('todo clear', r.state, data);
+    assert.deepEqual(r.state.todos, []);
+    assert.match(texts(run('todo', r.state, data).output), /No todos yet/);
+});
+
+test('todo: bad input changes nothing and shows usage', () => {
+    const s = run('todo add one', fresh(), data).state;
+    for (const c of ['todo add', 'todo done 0', 'todo done 5', 'todo done x', 'todo nope']) {
+        const r = run(c, s, data);
+        assert.deepEqual(r.state.todos, s.todos, c);
+        assert.ok(texts(r.output).length > 0, c);
+    }
+});
+
+test('loadTodos keeps only well-formed items and survives bad storage', () => {
+    const stored = JSON.stringify([{ text: 'a', done: true }, { text: 5 }, null, { text: 'b', done: 'yes' }]);
+    assert.deepEqual(loadTodos({ getItem: () => stored }), [{ text: 'a', done: true }, { text: 'b', done: false }]);
+    assert.deepEqual(loadTodos({ getItem: () => '{bad json' }), []);
+    assert.deepEqual(loadTodos({ getItem: () => { throw new Error('blocked'); } }), []);
+    assert.deepEqual(loadTodos(null), []);
+});
+
+test('saveTodos writes JSON under the todo key and reports failure', () => {
+    const calls = [];
+    assert.equal(saveTodos({ setItem: (...a) => calls.push(a) }, [{ text: 'a', done: false }]), true);
+    assert.deepEqual(calls, [[TODO_KEY, '[{"text":"a","done":false}]']]);
+    assert.equal(saveTodos({ setItem: () => { throw new Error('full'); } }, []), false);
 });

@@ -51,11 +51,17 @@ I'm not trying to become an expert overnight. I'm curious, and I'm learning one 
 | `echo` | print out anything |
 | `pwd` | print current working directory |
 | `whoami` | about current user |
+| `hostname` | print the host name |
+| `curl` | fetch my profile as JSON: `curl reksy747.github.io` (other hosts are blocked by CORS) |
+| `weather` | current weather from [wttr.in](https://wttr.in); `weather <city>` for another city |
+| `todo` | your own todo list, saved in your browser: `todo add <text>`, `todo done <n>`, `todo clear` |
+| `sudo` | let's see what happens |
 | `themes` | check available themes; `themes set <name>` to switch |
 | `history` | view command history |
 | `welcome` | display hero section |
 | `help` | check available commands |
 | `clear` | clear the terminal |
+| `exit` | leave the terminal |
 
 ## Tech Stack
 
