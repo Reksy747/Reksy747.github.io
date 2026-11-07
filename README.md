@@ -47,7 +47,7 @@ I'm not trying to become an expert overnight. I'm curious, and I'm learning one 
 | `education` | my education background |
 | `socials` | check out my social accounts |
 | `email` | send an email to me |
-| `gui` (or `resume`) | go to my CV in GUI |
+| `gui` (or `resume`) | go to my portfolio in GUI |
 | `echo` | print out anything |
 | `pwd` | print current working directory |
 | `whoami` | about current user |

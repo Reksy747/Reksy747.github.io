@@ -70,7 +70,7 @@ const HELP = {
     education: 'my education background',
     email: 'send an email to me',
     exit: 'leave the terminal',
-    gui: 'go to my CV in GUI (alias: resume)',
+    gui: 'go to my portfolio in GUI',
     help: 'check available commands',
     history: 'view command history',
     hostname: 'print the host name',
