@@ -11,20 +11,9 @@ const profile = {
         'I run cloud infrastructure on Google Cloud and Alibaba Cloud, on-premises Linux servers, and the CI/CD pipelines that deploy to them.',
         'Nearly five years designing, automating and maintaining infrastructure across cloud and on-premises environments: first as a Site Reliability Engineer at Pegipegi, now as a DevOps Engineer at MEMBER.ID.'
     ],
-    resumeUrl: 'https://drive.google.com/file/d/1SHfUOhkKift7SdeT7EdSMaQGtsuMURkG/view?usp=sharing',
     cvUrl: 'cv.html',
     portfolioUrl: 'portfolio.html'
 };
-
-const roles = [
-    { title: 'DevOps Engineer', company: 'MEMBER.ID', years: '2023–present' },
-    { title: 'Site Reliability Engineer', company: 'Pegipegi', years: '2021–2023' },
-    { title: 'Assistant Lecturer, Administration Systems', company: 'Duta Wacana Christian University', years: '2021' },
-    { title: 'Backend Developer', company: 'Dutatani.id, Duta Wacana Christian University', years: '2020–2021' },
-    { title: 'Computer Technician', company: 'Freelance', years: '2017–2021' },
-    { title: 'IT Support Technician', company: 'SMK Petrus Kanisius Klaten', years: '2016–2017' },
-    { title: 'IT Support Technician', company: 'Gadjah Mada University (UGM)', years: '2016' }
-];
 
 const repos = [
     { name: 'Golang-On-Cluster-GKE', url: 'https://github.com/Reksy747/Golang-On-Cluster-GKE', visibility: 'Public', line: 'A Go web service (gorilla/mux) with tests for every route, shipped by a GitHub Actions pipeline: build, test, package with Docker, push to Docker Hub, and deploy to a Google Kubernetes Engine cluster behind a load balancer.' },
@@ -47,4 +36,4 @@ const socials = [
     { label: 'Email', href: 'mailto:reksy737@gmail.com' }
 ];
 
-export default { profile, roles, repos, education, socials };
+export default { profile, repos, education, socials };

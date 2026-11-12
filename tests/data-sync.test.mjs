@@ -10,21 +10,13 @@ const read = (file) => readFileSync(new URL('../' + file, import.meta.url), 'utf
 const cv = read('cv.html');
 const portfolio = read('portfolio.html');
 
-test('every role title and company appears in cv.html', () => {
-    for (const role of data.roles) {
-        assert.ok(cv.includes(role.title), `cv.html is missing role title: ${role.title}`);
-        assert.ok(cv.includes(role.company), `cv.html is missing company: ${role.company}`);
-    }
-});
-
 test('every repo name appears in portfolio.html', () => {
     for (const repo of data.repos) {
         assert.ok(portfolio.includes(repo.name), `portfolio.html is missing repo: ${repo.name}`);
     }
 });
 
-test('data has seven roles and seven repos', () => {
-    assert.equal(data.roles.length, 7);
+test('data has seven repos', () => {
     assert.equal(data.repos.length, 7);
 });
 

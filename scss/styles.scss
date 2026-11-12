@@ -512,15 +512,6 @@ svg.fill { fill: currentColor; stroke: none; }
     body { padding-bottom: calc(3.5rem + env(safe-area-inset-bottom)); }
 }
 
-.visually-hidden {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    clip-path: inset(50%);
-    white-space: nowrap;
-}
-
 .column { min-width: 0; }
 
 // ---------- Sections ----------
