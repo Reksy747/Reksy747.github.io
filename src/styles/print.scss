@@ -1,0 +1,76 @@
+// Resume: one plain document column, black on white regardless of theme.
+.resume {
+  min-height: 100vh;
+  background: #fff;
+  color: #000;
+  font-family: Georgia, 'Iowan Old Style', 'Times New Roman', serif;
+  font-size: 1.0625rem;
+  line-height: 1.45;
+  overflow-wrap: anywhere; // long URLs in the contact list must not push the page sideways
+
+  a { color: inherit; text-decoration: none; }
+  p, ul, h1, h2, h3 { margin: 0; }
+  ul { padding-left: 1.1rem; }
+  button:focus-visible { outline: 2px solid #000; outline-offset: 2px; }
+}
+
+.resume__toolbar {
+  display: flex;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #ccc;
+  font-family: system-ui, sans-serif;
+
+  button {
+    font: inherit;
+    font-size: 0.875rem;
+    min-height: 44px;
+    padding: 0.4rem 0.9rem;
+    border: 1px solid #000;
+    border-radius: 2px;
+    background: #fff;
+    color: #000;
+    cursor: pointer;
+    &:hover { background: #000; color: #fff; }
+  }
+}
+
+.resume__page {
+  max-width: 46rem;
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem 4rem;
+}
+
+.resume__name { font-size: 1.9rem; line-height: 1.15; }
+.resume .resume__role { margin-top: 0.15rem; font-size: 1.1rem; }
+.resume .resume__contact { margin-top: 0.5rem; padding: 0; list-style: none; }
+
+.resume__section {
+  margin-top: 1.75rem;
+  > h2 {
+    margin-bottom: 0.6rem;
+    padding-bottom: 0.2rem;
+    border-bottom: 1px solid #000;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    break-after: avoid;
+  }
+}
+
+.resume__job, .resume__item { margin-top: 0.9rem; break-inside: avoid; }
+.resume__job:first-of-type, .resume__item:first-of-type { margin-top: 0; }
+.resume__job h3, .resume__item h3 { font-size: 1em; break-after: avoid; }
+.resume__dim { color: #333; }
+.resume__job ul { margin-top: 0.3rem; }
+
+@page { margin: 16mm; }
+
+@media print {
+  body:has(.resume) { background: #fff; }
+  .resume { font-size: 10.5pt; min-height: 0; }
+  .resume__toolbar { display: none; }
+  .resume__page { max-width: none; margin: 0; padding: 0; }
+  .resume__name { font-size: 20pt; }
+  .resume__section { margin-top: 14pt; }
+}
